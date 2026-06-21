@@ -135,29 +135,29 @@
               </div>
             </div>
             <div class="bin-row">
-              <div class="bin-icon" style="background:#e8f5ee">
-                <svg viewBox="0 0 24 24" style="stroke:#1b4d35"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+              <div class="bin-icon" style="background:#fff1e6">
+                <svg viewBox="0 0 24 24" style="stroke:#c2410c"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
               </div>
               <div class="bin-info">
                 <div class="bin-name" id="bin-name-1">Hotel Villa Pacet</div>
                 <div class="bin-loc" id="bin-loc-1">40L — Indoor</div>
               </div>
               <div class="bin-fill">
-                <div class="bin-pct" style="color:#1b4d35">42%</div>
-                <div class="fill-bar-wrap"><div class="fill-bar" style="width:42%;background:#3db870"></div></div>
+                <div class="bin-pct" style="color:#c2410c">42%</div>
+                <div class="fill-bar-wrap"><div class="fill-bar" style="width:42%;background:#fb923c"></div></div>
               </div>
             </div>
             <div class="bin-row">
-              <div class="bin-icon" style="background:#e8f5ee">
-                <svg viewBox="0 0 24 24" style="stroke:#1b4d35"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+              <div class="bin-icon" style="background:#fff1e6">
+                <svg viewBox="0 0 24 24" style="stroke:#c2410c"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
               </div>
               <div class="bin-info">
                 <div class="bin-name" id="bin-name-2">Pujasera Tahura</div>
                 <div class="bin-loc" id="bin-loc-2">20L — Indoor</div>
               </div>
               <div class="bin-fill">
-                <div class="bin-pct" style="color:#1b4d35">28%</div>
-                <div class="fill-bar-wrap"><div class="fill-bar" style="width:28%;background:#3db870"></div></div>
+                <div class="bin-pct" style="color:#c2410c">28%</div>
+                <div class="fill-bar-wrap"><div class="fill-bar" style="width:28%;background:#fb923c"></div></div>
               </div>
             </div>
           </div>
@@ -268,9 +268,9 @@
     <div class="masalah-visual">
       <div class="masalah-visual-icon">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-          <path d="M20 6C12 6 6 12 6 20s6 14 14 14 14-6 14-14S28 6 20 6z" stroke="#1b4d35" stroke-width="1.5" fill="none"/>
-          <path d="M14 20c3-5 6-7 6-7s3 2 6 7" stroke="#3db870" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          <path d="M20 13v14" stroke="#3db870" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M20 6C12 6 6 12 6 20s6 14 14 14 14-6 14-14S28 6 20 6z" stroke="#c2410c" stroke-width="1.5" fill="none"/>
+          <path d="M14 20c3-5 6-7 6-7s3 2 6 7" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M20 13v14" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round"/>
           <path d="M28 14l5-5M30 20l6-2M28 26l5 4" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".8"/>
         </svg>
       </div>
@@ -435,7 +435,7 @@
       <p style="font-size:.8rem;color:var(--muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:2px;font-weight:500">Selaras dengan SDGs</p>
     </div>
     <div class="sdg-strip">
-      <div class="sdg-pill" style="background:#e8f5ee;color:#1b4d35;border:1px solid #c0ddc8">
+      <div class="sdg-pill" style="background:#fff1e6;color:#c2410c;border:1px solid #f0ddc9">
         <svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 6v4M6 8h4"/></svg>
         SDG 9 — Industri, Inovasi, & Infrastruktur
       </div>
@@ -648,8 +648,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const pct = bin.fill_pct ?? bin.fill ?? 0;
       const isWarn = pct >= 75;
-      const color  = isWarn ? '#e67e22' : '#3db870';
-      const textColor = isWarn ? '#e67e22' : '#1b4d35';
+      const color  = isWarn ? '#e67e22' : '#fb923c';
+      const textColor = isWarn ? '#e67e22' : '#c2410c';
 
       if (nameEl) nameEl.textContent = bin.name;
       if (locEl)  locEl.textContent  = (bin.capacity || '') + (bin.unit || 'L') + ' — ' + (bin.location || '');
