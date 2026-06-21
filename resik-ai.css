@@ -73,12 +73,12 @@
 
 .ai-response-card {
   background: rgba(255,255,255,.98);
-  border: 1px solid rgba(20,56,42,.1);
+  border: 1px solid rgba(194,65,12,.1);
   border-radius: 18px;
   overflow: hidden;
   box-shadow:
-    0 8px 32px rgba(20,56,42,.14),
-    0 2px 6px  rgba(20,56,42,.07);
+    0 8px 32px rgba(194,65,12,.14),
+    0 2px 6px  rgba(194,65,12,.07);
 }
 
 
@@ -88,7 +88,7 @@
   align-items: center;
   gap: 10px;
   padding: 14px 18px;
-  background: linear-gradient(135deg, var(--primary,#14382a) 0%, #1f5c3a 100%);
+  background: linear-gradient(135deg, var(--primary,#c2410c) 0%, #ea580c 100%);
   color: #fff;
 }
 
@@ -143,14 +143,14 @@
 /* ── 4. QUICK QUESTION CHIPS ─────────────────────────────── */
 .ai-quick-wrap {
   padding: 12px 16px 8px;
-  border-bottom: 1px solid var(--border, #dde8e2);
+  border-bottom: 1px solid var(--border, #f0ddc9);
   background: #f7fbf8;
 }
 
 .ai-quick-label {
   font-size: .68rem;
   font-weight: 600;
-  color: var(--muted, #5d7268);
+  color: var(--muted, #8a6a52);
   text-transform: uppercase;
   letter-spacing: .06em;
   margin-bottom: 8px;
@@ -164,8 +164,8 @@
 
 .ai-chip {
   background: #fff;
-  border: 1.5px solid var(--border, #dde8e2);
-  color: var(--primary, #14382a);
+  border: 1.5px solid var(--border, #f0ddc9);
+  color: var(--primary, #c2410c);
   font-family: var(--font-body);
   font-size: .75rem;
   font-weight: 500;
@@ -176,9 +176,9 @@
   white-space: nowrap;
 }
 .ai-chip:hover {
-  background: var(--leaf-light, #e8f5ee);
-  border-color: var(--accent, #3ab86e);
-  color: var(--leaf, #1b4d35);
+  background: var(--leaf-light, #fff1e6);
+  border-color: var(--accent, #fb923c);
+  color: var(--leaf, #c2410c);
   transform: translateY(-1px);
 }
 
@@ -194,10 +194,10 @@
   scroll-behavior: smooth;
   /* Custom scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: var(--border,#dde8e2) transparent;
+  scrollbar-color: var(--border,#f0ddc9) transparent;
 }
 .ai-chat-log::-webkit-scrollbar { width: 4px; }
-.ai-chat-log::-webkit-scrollbar-thumb { background: var(--border,#dde8e2); border-radius: 99px; }
+.ai-chat-log::-webkit-scrollbar-thumb { background: var(--border,#f0ddc9); border-radius: 99px; }
 
 
 /* ── 6. CHAT BUBBLES ─────────────────────────────────────── */
@@ -217,7 +217,7 @@
 }
 .ai-bubble-user .ai-bubble-text {
   display: inline-block;
-  background: linear-gradient(135deg, var(--primary,#14382a), #1f5c3a);
+  background: linear-gradient(135deg, var(--primary,#c2410c), #ea580c);
   color: #fff;
   padding: 9px 14px;
   border-radius: 16px 16px 4px 16px;
@@ -232,9 +232,9 @@
 }
 .ai-bubble-model .ai-bubble-text {
   display: block;
-  background: var(--leaf-light, #f0faf4);
-  border: 1px solid var(--border, #dde8e2);
-  color: var(--text, #0e1b14);
+  background: var(--leaf-light, #fff8f0);
+  border: 1px solid var(--border, #f0ddc9);
+  color: var(--text, #2a1505);
   padding: 10px 14px;
   border-radius: 4px 16px 16px 16px;
   font-size: .85rem;
@@ -245,7 +245,7 @@
 /* Bubble sapaan pertama */
 .ai-bubble-greeting .ai-bubble-text {
   background: #fff;
-  border-color: var(--pale, #c8edda);
+  border-color: var(--pale, #ffd9b3);
 }
 
 /* List dalam bubble */
@@ -263,7 +263,7 @@
   content: '•';
   position: absolute;
   left: 4px;
-  color: var(--accent, #3ab86e);
+  color: var(--accent, #fb923c);
   font-weight: 700;
 }
 
@@ -281,8 +281,8 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  background: var(--leaf-light, #f0faf4);
-  border: 1px solid var(--border, #dde8e2);
+  background: var(--leaf-light, #fff8f0);
+  border: 1px solid var(--border, #f0ddc9);
   padding: 11px 16px;
   border-radius: 4px 16px 16px 16px;
 }
@@ -290,7 +290,7 @@
 .ai-loading-dot {
   width: 7px;
   height: 7px;
-  background: var(--accent, #3ab86e);
+  background: var(--accent, #fb923c);
   border-radius: 50%;
   animation: aiDotBounce .9s ease-in-out infinite;
 }
@@ -330,7 +330,7 @@
 
 /* ── 9. PLACEHOLDER INPUT ───────────────────────────────── */
 #searchInput.ai-mode::placeholder {
-  color: rgba(20,56,42,.4);
+  color: rgba(194,65,12,.4);
 }
 
 
