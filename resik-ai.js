@@ -78,7 +78,7 @@
     },
     {
       test: /gratis|biaya|harga|bayar/i,
-      reply: '✅ SELARAS **gratis** untuk perorangan dan organisasi nirlaba.\n\nPaket Pro tersedia untuk bisnis (restoran, hotel) dengan fitur analitik lanjutan. Info: admin@resik.id'
+      reply: '✅ SELARAS **gratis** untuk perorangan dan organisasi nirlaba.\n\nPaket Pro tersedia untuk bisnis (restoran, hotel) dengan fitur analitik lanjutan. Info: admin@selaras.id'
     },
     {
       test: /keamanan|aman|basi|layak/i,
@@ -89,7 +89,7 @@
   function getFallback(question) {
     const match = FALLBACK_MAP.find(f => f.test.test(question));
     if (match) return match.reply;
-    return 'Maaf, saya sedang tidak bisa terhubung. 🙏\n\nSilakan hubungi tim SELARAS langsung:\n• 📧 admin@resik.id *(< 24 jam)*\n• 💬 WA +6281234567890 *(< 2 jam)*';
+    return 'Maaf, saya sedang tidak bisa terhubung. 🙏\n\nSilakan hubungi tim SELARAS langsung:\n• 📧 admin@selaras.id *(< 24 jam)*\n• 💬 WA +6281234567890 *(< 2 jam)*';
   }
 
   /* ══════════════════════════════════════════════════════

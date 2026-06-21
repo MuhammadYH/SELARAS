@@ -75,7 +75,7 @@ C) Kapasitas pickup harian sudah penuh → coba esok hari
 D) Browser/koneksi bermasalah → clear cache, coba incognito
 
 Langkah: Dashboard → My Pickups → lihat error message jika ada.
-Jika masih gagal: screenshot + kirim ke admin@resik.id
+Jika masih gagal: screenshot + kirim ke admin@selaras.id
 `
   },
   {
@@ -112,7 +112,7 @@ HARGA & PAKET SELARAS:
 💼 PAKET PRO (berbayar) untuk bisnis:
 - Restoran, hotel, katering, kantin institusi
 - Fitur: analitik lanjutan, laporan impact, dukungan prioritas, API akses
-- Harga: hubungi admin@resik.id untuk penawaran khusus
+- Harga: hubungi admin@selaras.id untuk penawaran khusus
 
 Tidak ada biaya tersembunyi untuk akun Gratis.
 `
@@ -180,7 +180,7 @@ Akun terkunci (5x salah password):
 → Tunggu 15 menit, coba lagi
 → Atau gunakan fitur reset password
 
-Masih bermasalah: kirim email ke admin@resik.id dengan subject "Login Issue"
+Masih bermasalah: kirim email ke admin@selaras.id dengan subject "Login Issue"
 `
   },
 
@@ -191,7 +191,7 @@ Masih bermasalah: kirim email ke admin@resik.id dengan subject "Login Issue"
     tags: ['kontak', 'hubungi', 'email', 'whatsapp', 'admin', 'tim resik'],
     content: `
 KONTAK TIM SELARAS:
-📧 Email: admin@resik.id (respons < 24 jam)
+📧 Email: admin@selaras.id (respons < 24 jam)
 💬 WhatsApp: +6281234567890 (respons < 2 jam, jam kerja)
 📋 Form kontak: resik.id/kontak
 

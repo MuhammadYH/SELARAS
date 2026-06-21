@@ -115,7 +115,7 @@ function buildMessages(history, userMessage) {
 }
 
 function getFallbackReply() {
-  return 'Untuk saat ini, hubungi kami melalui:\n• 📧 admin@resik.id\n• 💬 WA +6281234567890\n\nTim kami siap membantu 7 hari seminggu. 🌿';
+  return 'Untuk saat ini, hubungi kami melalui:\n• 📧 admin@selaras.id\n• 💬 WA +6281234567890\n\nTim kami siap membantu 7 hari seminggu. 🌿';
 }
 
 app.listen(PORT, () => {
