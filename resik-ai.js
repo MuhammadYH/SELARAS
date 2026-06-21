@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════
-   resik-ai-v3.js — RESIK AI Assistant v3.0
+   resik-ai-v3.js — SELARAS AI Assistant v3.0
    
    Perubahan arsitektur dari v2:
    ✅ API key TIDAK ada di frontend (dipindah ke backend)
@@ -18,7 +18,7 @@
      ▶ KONFIGURASI — ubah sesuai environment
      ══════════════════════════════════════════════════════ */
 
-  // URL backend RESIK AI — TIDAK ada API key di sini
+  // URL backend SELARAS AI — TIDAK ada API key di sini
   const AI_BACKEND_URL = '/api/chat'; // production
   // const AI_BACKEND_URL = 'http://localhost:3001/api/chat'; // development
 
@@ -56,12 +56,12 @@
      ▶ QUICK QUESTIONS
      ══════════════════════════════════════════════════════ */
   const QUICK_QUESTIONS = [
-    { label: '🌿 Apa itu RESIK?',       text: 'Apa itu RESIK dan bagaimana cara kerjanya?' },
-    { label: '📋 Cara daftar',           text: 'Bagaimana cara mendaftar di RESIK?' },
-    { label: '💰 Gratis atau berbayar?', text: 'Apakah RESIK gratis untuk digunakan?' },
-    { label: '🚚 Sistem pickup',         text: 'Bagaimana sistem pickup food waste di RESIK?' },
-    { label: '🏅 Badge & reward',        text: 'Apa itu sistem badge di RESIK?' },
-    { label: '🔒 Keamanan pangan',       text: 'Bagaimana RESIK memastikan keamanan makanan?' },
+    { label: '🌿 Apa itu SELARAS?',       text: 'Apa itu SELARAS dan bagaimana cara kerjanya?' },
+    { label: '📋 Cara daftar',           text: 'Bagaimana cara mendaftar di SELARAS?' },
+    { label: '💰 Gratis atau berbayar?', text: 'Apakah SELARAS gratis untuk digunakan?' },
+    { label: '🚚 Sistem pickup',         text: 'Bagaimana sistem pickup food waste di SELARAS?' },
+    { label: '🏅 Badge & reward',        text: 'Apa itu sistem badge di SELARAS?' },
+    { label: '🔒 Keamanan pangan',       text: 'Bagaimana SELARAS memastikan keamanan makanan?' },
   ];
 
   /* ══════════════════════════════════════════════════════
@@ -78,7 +78,7 @@
     },
     {
       test: /gratis|biaya|harga|bayar/i,
-      reply: '✅ RESIK **gratis** untuk perorangan dan organisasi nirlaba.\n\nPaket Pro tersedia untuk bisnis (restoran, hotel) dengan fitur analitik lanjutan. Info: admin@resik.id'
+      reply: '✅ SELARAS **gratis** untuk perorangan dan organisasi nirlaba.\n\nPaket Pro tersedia untuk bisnis (restoran, hotel) dengan fitur analitik lanjutan. Info: admin@resik.id'
     },
     {
       test: /keamanan|aman|basi|layak/i,
@@ -89,7 +89,7 @@
   function getFallback(question) {
     const match = FALLBACK_MAP.find(f => f.test.test(question));
     if (match) return match.reply;
-    return 'Maaf, saya sedang tidak bisa terhubung. 🙏\n\nSilakan hubungi tim RESIK langsung:\n• 📧 admin@resik.id *(< 24 jam)*\n• 💬 WA +6281234567890 *(< 2 jam)*';
+    return 'Maaf, saya sedang tidak bisa terhubung. 🙏\n\nSilakan hubungi tim SELARAS langsung:\n• 📧 admin@resik.id *(< 24 jam)*\n• 💬 WA +6281234567890 *(< 2 jam)*';
   }
 
   /* ══════════════════════════════════════════════════════
@@ -278,7 +278,7 @@
     try {
       result = await callBackend(question);
     } catch (err) {
-      console.warn('[RESIK AI] Backend error:', err.message);
+      console.warn('[SELARAS AI] Backend error:', err.message);
 
       if (err.message === 'rate_limit') {
         if (loadingBubble) loadingBubble.style.display = 'none';
@@ -323,8 +323,8 @@
         <div class="ai-response-header">
           <div class="ai-avatar">🌿</div>
           <div class="ai-header-info">
-            <div class="ai-name">RESIK AI</div>
-            <div class="ai-tagline">Asisten operasional platform RESIK</div>
+            <div class="ai-name">SELARAS AI</div>
+            <div class="ai-tagline">Asisten operasional platform SELARAS</div>
           </div>
           <button class="ai-clear-btn" id="aiClearBtn" title="Mulai percakapan baru">
             🔄 Reset
@@ -339,8 +339,8 @@
         <div class="ai-chat-log" id="aiChatLog">
           <div class="ai-bubble ai-bubble-model ai-bubble-greeting">
             <span class="ai-bubble-text">
-              Halo! Saya <strong>RESIK AI</strong> 🌿<br>
-              Ada yang ingin ditanyakan soal platform RESIK,
+              Halo! Saya <strong>SELARAS AI</strong> 🌿<br>
+              Ada yang ingin ditanyakan soal platform SELARAS,
               food waste management, atau bantuan teknis?
             </span>
           </div>
@@ -384,13 +384,13 @@
     const sendBtn = document.querySelector('.hero-search-btn');
 
     if (!input || !sendBtn) {
-      console.warn('[RESIK AI] Elemen UI tidak ditemukan.');
+      console.warn('[SELARAS AI] Elemen UI tidak ditemukan.');
       return;
     }
 
     buildUI();
 
-    input.setAttribute('placeholder', 'Ketik pertanyaan tentang RESIK...');
+    input.setAttribute('placeholder', 'Ketik pertanyaan tentang SELARAS...');
     input.classList.add('ai-mode');
     input.removeAttribute('oninput');
     sendBtn.textContent = 'Kirim';
@@ -401,7 +401,7 @@
       document.getElementById('aiResponseArea')?.classList.add('ai-open');
     });
 
-    console.log('[RESIK AI v3] Siap. Backend-secure mode aktif. 🌿');
+    console.log('[SELARAS AI v3] Siap. Backend-secure mode aktif. 🌿');
   }
 
   if (document.readyState === 'loading') {

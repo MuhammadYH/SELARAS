@@ -1,7 +1,7 @@
 {
   "name": "resik-ai-backend",
   "version": "3.0.0",
-  "description": "RESIK AI Backend — secure, modular AI orchestration server",
+  "description": "SELARAS AI Backend — secure, modular AI orchestration server",
   "type": "module",
   "main": "server.js",
   "scripts": {

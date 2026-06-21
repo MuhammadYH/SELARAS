@@ -1,6 +1,6 @@
 /**
  * resik-supabase.js
- * Integrasi Supabase untuk seluruh halaman RESIK
+ * Integrasi Supabase untuk seluruh halaman SELARAS
  * Gunakan data dummy hanya jika tidak ada data di database
  */
 
@@ -31,7 +31,7 @@ async function getSupabase() {
 // AUTH — Login & Register
 // ═══════════════════════════════════════════════════
 
-window.RESIK_AUTH = {
+window.SELARAS_AUTH = {
   async login(email, password) {
     const sb = await getSupabase();
     const { data, error } = await sb.auth.signInWithPassword({ email, password });
@@ -76,7 +76,7 @@ window.RESIK_AUTH = {
     const sb = await getSupabase();
     const { data, error } = await sb.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin + '/01RESIK.html' }
+      options: { redirectTo: window.location.origin + '/01SELARAS.html' }
     });
     if (error) throw error;
     return data;
@@ -107,7 +107,7 @@ window.RESIK_AUTH = {
 // CONTACT — Kirim Pesan
 // ═══════════════════════════════════════════════════
 
-window.RESIK_CONTACT = {
+window.SELARAS_CONTACT = {
   async submit({ nama, email, peran, kategori, pesan }) {
     const sb = await getSupabase();
     const { data, error } = await sb.from('contact_messages').insert([{
@@ -142,7 +142,7 @@ const DUMMY_STATS = {
   emisi_turun_pct: 22,
 };
 
-window.RESIK_DATA = {
+window.SELARAS_DATA = {
   async getBins() {
     try {
       const sb = await getSupabase();
@@ -153,12 +153,12 @@ window.RESIK_DATA = {
 
       if (error) throw error;
       if (!data || data.length === 0) {
-        console.info('RESIK: Tidak ada data smart_bins di DB, menggunakan dummy.');
+        console.info('SELARAS: Tidak ada data smart_bins di DB, menggunakan dummy.');
         return DUMMY_BINS;
       }
       return data;
     } catch (e) {
-      console.warn('RESIK getBins error, fallback ke dummy:', e.message);
+      console.warn('SELARAS getBins error, fallback ke dummy:', e.message);
       return DUMMY_BINS;
     }
   },
@@ -175,12 +175,12 @@ window.RESIK_DATA = {
 
       if (error) throw error;
       if (!data) {
-        console.info('RESIK: Tidak ada data dashboard_stats di DB, menggunakan dummy.');
+        console.info('SELARAS: Tidak ada data dashboard_stats di DB, menggunakan dummy.');
         return DUMMY_STATS;
       }
       return data;
     } catch (e) {
-      console.warn('RESIK getStats error, fallback ke dummy:', e.message);
+      console.warn('SELARAS getStats error, fallback ke dummy:', e.message);
       return DUMMY_STATS;
     }
   },
@@ -215,7 +215,7 @@ const DUMMY_WEEKLY = [
   { day: 'Min', kg: 285 },
 ];
 
-window.RESIK_CHART = {
+window.SELARAS_CHART = {
   async getWeekly() {
     try {
       const sb = await getSupabase();
@@ -237,10 +237,10 @@ window.RESIK_CHART = {
 // HELPER — Update Nav berdasarkan status auth
 // ═══════════════════════════════════════════════════
 
-window.RESIK_UI = {
+window.SELARAS_UI = {
   async updateNavAuth() {
     try {
-      const user = await RESIK_AUTH.getUser();
+      const user = await SELARAS_AUTH.getUser();
       const navBtn = document.querySelector('.nav-btn');
       const drawerCta = document.querySelector('.drawer-cta a');
 
@@ -251,8 +251,8 @@ window.RESIK_UI = {
           navBtn.href = '#';
           navBtn.addEventListener('click', async (e) => {
             e.preventDefault();
-            if (confirm('Keluar dari akun RESIK?')) {
-              await RESIK_AUTH.logout();
+            if (confirm('Keluar dari akun SELARAS?')) {
+              await SELARAS_AUTH.logout();
               location.reload();
             }
           });
@@ -270,5 +270,5 @@ window.RESIK_UI = {
 
 // Auto-update nav on every page load
 document.addEventListener('DOMContentLoaded', () => {
-  RESIK_UI.updateNavAuth();
+  SELARAS_UI.updateNavAuth();
 });

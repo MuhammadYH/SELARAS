@@ -1,17 +1,17 @@
 -e /**
  * auth.js
  * ─────────────────────────────────────────────
- * RESIK Authentication Core Module
+ * SELARAS Authentication Core Module
  *
  * Depends on: supabaseClient.js (harus dimuat lebih dulu)
- * Expose: window.RESIK_AUTH_CORE
+ * Expose: window.SELARAS_AUTH_CORE
  * ─────────────────────────────────────────────
  */
 
 /**
  * auth.js
  * ─────────────────────────────────────────────
- * RESIK Authentication Core Module
+ * SELARAS Authentication Core Module
  * Mengelola semua operasi auth: login, register,
  * logout, profile, dan redirect berbasis role.
  *
@@ -19,8 +19,8 @@
  * ─────────────────────────────────────────────
  */
 
-// ── Role yang valid di sistem RESIK ──
-const RESIK_ROLES = ['provider', 'pengolah', 'buyer', 'admin'];
+// ── Role yang valid di sistem SELARAS ──
+const SELARAS_ROLES = ['provider', 'pengolah', 'buyer', 'admin'];
 
 // ── Mapping role → halaman tujuan setelah login ──
 const ROLE_REDIRECT_MAP = {
@@ -83,8 +83,8 @@ async function registerUser({ email, password, firstName, lastName = '', role, o
   if (!email || !password || !firstName || !role) {
     throw new Error('Email, password, nama depan, dan role wajib diisi.');
   }
-  if (!RESIK_ROLES.includes(role)) {
-    throw new Error(`Role tidak valid. Pilih: ${RESIK_ROLES.join(', ')}`);
+  if (!SELARAS_ROLES.includes(role)) {
+    throw new Error(`Role tidak valid. Pilih: ${SELARAS_ROLES.join(', ')}`);
   }
   if (password.length < 8) {
     throw new Error('Password minimal 8 karakter.');
@@ -133,7 +133,7 @@ async function registerUser({ email, password, firstName, lastName = '', role, o
 
   if (profileError) {
     // Profil gagal disimpan — log peringatan, jangan batalkan flow
-    console.warn('RESIK register: gagal simpan profil →', profileError.message);
+    console.warn('SELARAS register: gagal simpan profil →', profileError.message);
   }
 
   return { user, profile: profile ?? profilePayload };
@@ -201,7 +201,7 @@ async function loginWithGoogle(redirectTo = window.location.origin + '/oauth-cal
 async function logoutUser(redirect = true) {
   const sb = await _getClient();
   const { error } = await sb.auth.signOut();
-  if (error) console.warn('RESIK logout error:', error.message);
+  if (error) console.warn('SELARAS logout error:', error.message);
   if (redirect) window.location.href = LOGIN_PAGE;
 }
 
@@ -266,11 +266,11 @@ async function getProfile(userId, retry = 0) {
     // belum selesai saat getProfile langsung dipanggil setelah register.
     if (error.code === 'PGRST116' && retry < 3) {
       const delay = (retry + 1) * 600; // 600ms, 1200ms, 1800ms
-      console.warn(`RESIK getProfile: profile belum ada, retry ke-${retry + 1} dalam ${delay}ms...`);
+      console.warn(`SELARAS getProfile: profile belum ada, retry ke-${retry + 1} dalam ${delay}ms...`);
       await new Promise(resolve => setTimeout(resolve, delay));
       return getProfile(userId, retry + 1);
     }
-    console.warn('RESIK getProfile error:', error.message);
+    console.warn('SELARAS getProfile error:', error.message);
     return null;
   }
   return data;
@@ -316,7 +316,7 @@ async function resetPassword(email) {
 // EXPORT — expose ke window agar bisa dipakai semua halaman
 // ═══════════════════════════════════════════════════
 
-window.RESIK_AUTH_CORE = {
+window.SELARAS_AUTH_CORE = {
   // Auth
   registerUser,
   loginUser,
@@ -337,6 +337,6 @@ window.RESIK_AUTH_CORE = {
 
   // Helpers
   redirectByRole : _redirectByRole,
-  ROLES          : RESIK_ROLES,
+  ROLES          : SELARAS_ROLES,
   REDIRECT_MAP   : ROLE_REDIRECT_MAP,
 };

@@ -12,9 +12,9 @@
   function getPageTitle() {
     const body = document.body;
     if (body && body.dataset.navbarTitle) return body.dataset.navbarTitle;
-    // Strip " — RESIK Admin" suffix from <title>
+    // Strip " — SELARAS Admin" suffix from <title>
     const t = document.title || '';
-    return t.replace(/\s*[—–-]\s*RESIK Admin\s*$/i, '').trim() || 'Admin';
+    return t.replace(/\s*[—–-]\s*SELARAS Admin\s*$/i, '').trim() || 'Admin';
   }
 
   // ── Build navbar HTML ────────────────────────────────────────────────────

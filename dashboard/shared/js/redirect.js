@@ -1,7 +1,7 @@
 /**
  * redirect.js
  * ─────────────────────────────────────────────
- * RESIK Redirect Manager
+ * SELARAS Redirect Manager
  *
  * Mengelola alur redirect setelah login berhasil:
  *   1. Cek apakah ada return URL tersimpan di sessionStorage
@@ -9,11 +9,11 @@
  *   3. Jika tidak → redirect ke dashboard default role
  *
  * Depends on: supabaseClient.js, auth.js, session.js
- * Expose: window.RESIK_REDIRECT
+ * Expose: window.SELARAS_REDIRECT
  * ─────────────────────────────────────────────
  */
 
-const RESIK_REDIRECT = (() => {
+const SELARAS_REDIRECT = (() => {
 
   const ROLE_HOME = {
     admin    : '/dashboard/admin/',
@@ -50,7 +50,7 @@ const RESIK_REDIRECT = (() => {
   function toRoleDashboard(role) {
     const target = ROLE_HOME[role];
     if (!target) {
-      console.warn(`RESIK redirect: role "${role}" tidak dikenali → ke login`);
+      console.warn(`SELARAS redirect: role "${role}" tidak dikenali → ke login`);
       window.location.href = '/login.html';
       return;
     }
@@ -89,4 +89,4 @@ const RESIK_REDIRECT = (() => {
   return { afterLogin, toRoleDashboard, saveReturnUrl, ROLE_HOME };
 })();
 
-window.RESIK_REDIRECT = RESIK_REDIRECT;
+window.SELARAS_REDIRECT = SELARAS_REDIRECT;

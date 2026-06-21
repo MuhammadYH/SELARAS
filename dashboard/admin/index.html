@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard — RESIK Admin</title>
+  <title>Dashboard — SELARAS Admin</title>
 
   <link rel="stylesheet" href="/dashboard/shared/css/shared.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/layout.css"/>
@@ -28,7 +28,7 @@
       <div class="banner-card mb-6">
         <div style="display:flex; justify-content:space-between; align-items:flex-start;">
           <div>
-            <p style="font-size:var(--font-size-sm); color:rgba(255,255,255,0.7); margin-bottom:4px;">Dashboard RESIK</p>
+            <p style="font-size:var(--font-size-sm); color:rgba(255,255,255,0.7); margin-bottom:4px;">Dashboard SELARAS</p>
             <h2 style="font-size:var(--font-size-2xl); font-weight:800; color:white; margin-bottom:var(--space-3);">Smart Bin Monitor</h2>
             <p style="font-size:var(--font-size-sm); color:rgba(255,255,255,0.85);">
               <svg style="display:inline;vertical-align:middle;margin-right:4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
@@ -171,10 +171,10 @@
   <script src="js/admin-dashboard.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      const ctx = await RESIK_GUARD.protect(['admin']);
+      const ctx = await SELARAS_GUARD.protect(['admin']);
       if (!ctx) return;
       // Render sidebar with user context
-      RESIK_SIDEBAR.render({
+      SELARAS_SIDEBAR.render({
         role       : 'admin',
         currentPage: 'index.html',
         user       : { ...(ctx.profile || {}), email: ctx.user?.email },

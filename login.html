@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="resik-main.css">
-  <title>Masuk — RESIK</title>
+  <title>Masuk — SELARAS</title>
 
 
   <style>
@@ -897,7 +897,7 @@
 <div class="topbar" style="justify-content:space-between;">
   <a href="index.html" class="logo-link">
     <div class="logo-wrapper">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTgAAAGzCAYAAAAL0XjzAAEAAElEQVR4nOydd5wkR3m/n6rqNGF3by8pnHIACaGIACEESoBEzmAyCCSCABsRTDT4h3HEmJxsMNEiCAGyTTAgkWWRQWAQWAIsAeJOd7dhUoeq+v1R3b2ze7uX73b3tp77zGdud2Z7erqrq6u+9b7fV+DZJcIwJM9zjjzySM65z1n2iKMOo9ubZNWqMYqiINMZIyMjdHvT/OAHP2B6qksURRgEExMT/P53fxRbN3fAlBvUgAAhwBoQEoJAkucGLKgAdAFhNPM7qcDo8rUcpAQhBMZYrN3+/kspMcZ9uBACaxUASiqEEGitsVjAlK/boffO/L7C7ugDd4hc4Pdmgd97PB6Px+PxeDwej8fj8Xg8MwSLvQPLgTAMAdBak+c5QRBw0UUX2de+9jWsP2Q1Uhg2b91Ms9nACOj3uwghGB8dY7IzTRRFhFGCxZKludXaolRIEAT8+Hs/Issy/nd//n3uu+8+Xnzxxex75R0YSWB7CQDGnT3hy+RQbDkrCsJXMcjQLaRSFaklVYBCMJH7HEQc5Bk7kRLHb9m0iXePiNQ0SBOQp2sWOMLYGt4SWoZgCsSgVG6CJNLbVxjgQMBHYzI4RJuMuenHNXTr9TBCl5AWKS0fxJGBiAoAAAAASUVORK5CYII=" alt="RESIK" class="logo-img">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABTgAAAGzCAYAAAAL0XjzAAEAAElEQVR4nOydd5wkR3m/n6rqNGF3by8pnHIACaGIACEESoBEzmAyCCSCABsRTDT4h3HEmJxsMNEiCAGyTTAgkWWRQWAQWAIsAeJOd7dhUoeq+v1R3b2ze7uX73b3tp77zGdud2Z7erqrq6u+9b7fV+DZJcIwJM9zjjzySM65z1n2iKMOo9ubZNWqMYqiINMZIyMjdHvT/OAHP2B6qksURRgEExMT/P53fxRbN3fAlBvUgAAhwBoQEoJAkucGLKgAdAFhNPM7qcDo8rUcpAQhBMZYrN3+/kspMcZ9uBACaxUASiqEEGitsVjAlK/boffO/L7C7ugDd4hc4Pdmgd97PB6Px+PxeDwej8fj8Xg8MwSLvQPLgTAMAdBak+c5QRBw0UUX2de+9jWsP2Q1Uhg2b91Ms9nACOj3uwghGB8dY7IzTRRFhFGCxZKludXaolRIEAT8+Hs/Issy/nd//n3uu+8+Xnzxxex75R0YSWB7CQDGnT3hy+RQbDkrCsJXMcjQLaRSFaklVYBCMJH7HEQc5Bk7kRLHb9m0iXePiNQ0SBOQp2sWOMLYGt4SWoZgCsSgVG6CJNLbVxjgQMBHYzI4RJuMuenHNXTr9TBCl5AWKS0fxJGBiAoAAAAASUVORK5CYII=" alt="SELARAS" class="logo-img">
     </div>
   </a>
   <a href="index.html" class="back-link">
@@ -1316,7 +1316,7 @@
 
     try {
 
-      await RESIK_AUTH.login(email, password);
+      await SELARAS_AUTH.login(email, password);
 
       // hide login form
       document.getElementById('login-form-wrap').style.display = 'none';
@@ -1396,7 +1396,7 @@
 
     try {
 
-      const auth = await RESIK_AUTH.register({
+      const auth = await SELARAS_AUTH.register({
         email,
         password,
         firstName,
@@ -1424,7 +1424,7 @@
       if (profileError) throw profileError;
 
       // Login otomatis setelah register agar sesi aktif (sama seperti user yang masuk manual)
-      await RESIK_AUTH.login(email, password);
+      await SELARAS_AUTH.login(email, password);
 
       // hide register content
       document.getElementById('reg-content').style.display = 'none';
@@ -1471,7 +1471,7 @@
 
   async function handleGoogle() {
     try {
-      await RESIK_AUTH.loginWithGoogle();
+      await SELARAS_AUTH.loginWithGoogle();
     } catch (err) {
       console.error(err);
       showToast('Google login gagal.');
@@ -1492,7 +1492,7 @@
       const email = document.getElementById('loginEmail').value.trim();
       if (!email) { showToast('Masukkan email login Anda terlebih dahulu.'); return; }
       try {
-        await RESIK_AUTH_CORE.resetPassword(email);
+        await SELARAS_AUTH_CORE.resetPassword(email);
         showToast('✅ Link reset password dikirim ke ' + email);
       } catch (err) {
         showToast('❌ ' + (err.message || 'Gagal mengirim email reset.'));

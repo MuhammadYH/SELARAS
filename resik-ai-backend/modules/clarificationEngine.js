@@ -43,7 +43,7 @@ const CLARIFICATION_RULES = {
   operational: {
     ambiguityCheck: (msg) => !/provider|pengelola|upload|klaim|listing|dashboard/.test(msg),
     question: (msg) =>
-      `Kamu menggunakan RESIK sebagai:\n\n` +
+      `Kamu menggunakan SELARAS sebagai:\n\n` +
       `• **Food Provider** (ingin upload / kelola listing)\n` +
       `• **Pengelola** (ingin klaim / pickup makanan)\n\n` +
       `Role kamu menentukan alur yang berbeda.`
@@ -54,7 +54,7 @@ const CLARIFICATION_RULES = {
     question: (msg) =>
       `Boleh saya tahu lebih lanjut? 🙏\n\n` +
       `Apakah pertanyaanmu tentang:\n` +
-      `• **Cara mendaftar / mulai** menggunakan RESIK\n` +
+      `• **Cara mendaftar / mulai** menggunakan SELARAS\n` +
       `• **Masalah teknis** yang sedang dihadapi\n` +
       `• **Cara kerja fitur** tertentu\n` +
       `• **Lainnya**\n\n` +

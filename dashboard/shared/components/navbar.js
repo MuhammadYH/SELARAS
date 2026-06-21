@@ -1,16 +1,16 @@
 /**
  * navbar.js — Shared Navbar Component
- * Global: RESIK_NAVBAR
+ * Global: SELARAS_NAVBAR
  *
  * Drop-in pengganti admin-navbar.js, bekerja untuk semua role.
  * Auto-inject ke .admin-topbar.
  * Dispatch event 'navbar:ready' setelah inject.
  *
  * Baca judul dari: <body data-navbar-title="Dashboard">
- * Fallback: dari <title>, stripping " — RESIK *" suffix.
+ * Fallback: dari <title>, stripping " — SELARAS *" suffix.
  */
 
-const RESIK_NAVBAR = (() => {
+const SELARAS_NAVBAR = (() => {
   'use strict';
 
   // ── Resolve page title ───────────────────────────────────────────────────
@@ -19,7 +19,7 @@ const RESIK_NAVBAR = (() => {
     const fromBody = document.body?.dataset?.navbarTitle;
     if (fromBody) return fromBody;
     const t = document.title || '';
-    return t.replace(/\s*[—–-]\s*RESIK\s*\w*\s*$/i, '').trim() || 'Dashboard';
+    return t.replace(/\s*[—–-]\s*SELARAS\s*\w*\s*$/i, '').trim() || 'Dashboard';
   }
 
   // ── Build HTML ───────────────────────────────────────────────────────────

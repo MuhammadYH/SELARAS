@@ -3,7 +3,7 @@
 
 const AdminAuth = (() => {
 
-  const SESSION_KEY = 'RESIK_admin_session';
+  const SESSION_KEY = 'SELARAS_admin_session';
 
   function getSession() {
     try { return JSON.parse(sessionStorage.getItem(SESSION_KEY)); }

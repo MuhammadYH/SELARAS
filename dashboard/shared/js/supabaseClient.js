@@ -1,7 +1,7 @@
 /**
  * supabaseClient.js
  * ─────────────────────────────────────────────
- * RESIK Supabase Client — Shared Core
+ * SELARAS Supabase Client — Shared Core
  *
  * Hanya berisi inisialisasi Supabase client.
  * Tidak ada auth logic, UI logic, atau data fetching di sini.

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bantuan — RESIK Admin</title>
+  <title>Bantuan — SELARAS Admin</title>
 
   <link rel="stylesheet" href="/dashboard/shared/css/shared.css">
   <link rel="stylesheet" href="/dashboard/shared/css/layout.css">
@@ -165,7 +165,7 @@
                 </div>
               </a>
 
-              <a class="contact-option" href="mailto:support@RESIK.id">
+              <a class="contact-option" href="mailto:support@SELARAS.id">
                 <div class="contact-option-icon email">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="contact-option-info">
                   <div class="contact-option-name">Kirim Email</div>
-                  <div class="contact-option-sub">support@RESIK.id</div>
+                  <div class="contact-option-sub">support@SELARAS.id</div>
                 </div>
                 <div class="contact-option-arrow">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -227,10 +227,10 @@
 </script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      const ctx = await RESIK_GUARD.protect(['admin']);
+      const ctx = await SELARAS_GUARD.protect(['admin']);
       if (!ctx) return;
       // Render sidebar with user context
-      RESIK_SIDEBAR.render({
+      SELARAS_SIDEBAR.render({
         role       : 'admin',
         currentPage: 'bantuan.html',
         user       : { ...(ctx.profile || {}), email: ctx.user?.email },

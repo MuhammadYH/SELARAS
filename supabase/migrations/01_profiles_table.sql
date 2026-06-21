@@ -1,6 +1,6 @@
 -- ============================================================
 -- 01_profiles_table.sql
--- RESIK — Profiles Table
+-- SELARAS — Profiles Table
 -- Jalankan ini PERTAMA di Supabase SQL Editor.
 -- ============================================================
 

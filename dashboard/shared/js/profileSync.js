@@ -1,17 +1,17 @@
 /**
  * profileSync.js
  * ─────────────────────────────────────────────────────────────────────────────
- * RESIK Profile Sync Module
+ * SELARAS Profile Sync Module
  *
  * Mengelola sinkronisasi profil user antara Supabase DB dan UI:
  *   - Fallback jika trigger on_auth_user_created lambat / gagal
  *   - Update profil (first_name, last_name, organization — bukan role)
  *   - Upload avatar ke Supabase Storage bucket "avatars"
- *   - Cache profil aktif di window.__RESIK_PROFILE__
+ *   - Cache profil aktif di window.__SELARAS_PROFILE__
  *   - Refresh sidebar setelah update
  *
  * Depends on  : supabaseClient.js, auth.js, roleGuard.js (harus dimuat lebih dulu)
- * Expose      : window.RESIK_PROFILE
+ * Expose      : window.SELARAS_PROFILE
  *
  * Load order  : setelah roleGuard.js, sebelum sidebar.js
  *
@@ -21,7 +21,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const RESIK_PROFILE = (() => {
+const SELARAS_PROFILE = (() => {
   'use strict';
 
   // ── Kolom yang boleh diupdate oleh user biasa ────────────────────────────
@@ -46,7 +46,7 @@ const RESIK_PROFILE = (() => {
    */
   async function _getClient() {
     if (typeof getSupabase !== 'function') {
-      throw new Error('[RESIK_PROFILE] supabaseClient.js belum dimuat.');
+      throw new Error('[SELARAS_PROFILE] supabaseClient.js belum dimuat.');
     }
     return await getSupabase();
   }
@@ -66,15 +66,15 @@ const RESIK_PROFILE = (() => {
    * @param {Object} profile
    */
   function _syncCache(profile) {
-    window.__RESIK_PROFILE__ = profile;
+    window.__SELARAS_PROFILE__ = profile;
 
     // Sinkron ke sidebar jika sudah dirender
-    if (typeof RESIK_SIDEBAR !== 'undefined' && typeof RESIK_SIDEBAR.updateUser === 'function') {
+    if (typeof SELARAS_SIDEBAR !== 'undefined' && typeof SELARAS_SIDEBAR.updateUser === 'function') {
       const fullName = (profile.full_name && profile.full_name.trim())
         || [profile.first_name, profile.last_name].filter(Boolean).join(' ')
         || 'Pengguna';
 
-      RESIK_SIDEBAR.updateUser({
+      SELARAS_SIDEBAR.updateUser({
         name      : fullName,
         role      : profile.role,
         avatarUrl : profile.avatar_url,
@@ -128,7 +128,7 @@ const RESIK_PROFILE = (() => {
    * Fallback: buat row profil jika trigger on_auth_user_created gagal / lambat.
    * Aman dipanggil berkali-kali (ON CONFLICT DO NOTHING di DB).
    *
-   * Biasanya dipanggil otomatis oleh RESIK_AUTH_CORE.getProfile() lewat retry,
+   * Biasanya dipanggil otomatis oleh SELARAS_AUTH_CORE.getProfile() lewat retry,
    * tapi bisa juga dipanggil manual di halaman pertama setelah register.
    *
    * @param {Object} user - Supabase auth user object
@@ -136,7 +136,7 @@ const RESIK_PROFILE = (() => {
    */
   async function ensureProfile(user) {
     if (!user?.id) {
-      console.warn('[RESIK_PROFILE] ensureProfile: user tidak valid.');
+      console.warn('[SELARAS_PROFILE] ensureProfile: user tidak valid.');
       return null;
     }
 
@@ -151,7 +151,7 @@ const RESIK_PROFILE = (() => {
 
     if (existing) {
       // Sudah ada — ambil lengkap
-      return await RESIK_AUTH_CORE.getProfile(user.id);
+      return await SELARAS_AUTH_CORE.getProfile(user.id);
     }
 
     // Belum ada — buat manual (fallback dari trigger)
@@ -170,11 +170,11 @@ const RESIK_PROFILE = (() => {
       .single();
 
     if (error) {
-      console.error('[RESIK_PROFILE] ensureProfile gagal:', error.message);
+      console.error('[SELARAS_PROFILE] ensureProfile gagal:', error.message);
       return null;
     }
 
-    console.info('[RESIK_PROFILE] Profile dibuat manual (trigger fallback).');
+    console.info('[SELARAS_PROFILE] Profile dibuat manual (trigger fallback).');
     _syncCache(data);
     return data;
   }
@@ -189,7 +189,7 @@ const RESIK_PROFILE = (() => {
    * @returns {Promise<Object>} profil yang sudah diupdate
    *
    * @example
-   *   const profile = await RESIK_PROFILE.updateProfile({
+   *   const profile = await SELARAS_PROFILE.updateProfile({
    *     first_name: 'Budi',
    *     last_name : 'Santoso',
    *     organization: 'Pesantren Darul Ulum',
@@ -197,7 +197,7 @@ const RESIK_PROFILE = (() => {
    */
   async function updateProfile(updates) {
     const user = await _getCurrentUser();
-    if (!user) throw new Error('[RESIK_PROFILE] Tidak ada sesi aktif.');
+    if (!user) throw new Error('[SELARAS_PROFILE] Tidak ada sesi aktif.');
 
     // Filter: hanya kolom yang diizinkan
     const safeUpdates = {};
@@ -206,7 +206,7 @@ const RESIK_PROFILE = (() => {
     }
 
     if (Object.keys(safeUpdates).length === 0) {
-      throw new Error('[RESIK_PROFILE] Tidak ada field valid untuk diupdate.');
+      throw new Error('[SELARAS_PROFILE] Tidak ada field valid untuk diupdate.');
     }
 
     const sb = await _getClient();
@@ -217,7 +217,7 @@ const RESIK_PROFILE = (() => {
       .select()
       .single();
 
-    if (error) throw new Error('[RESIK_PROFILE] updateProfile gagal: ' + error.message);
+    if (error) throw new Error('[SELARAS_PROFILE] updateProfile gagal: ' + error.message);
 
     _syncCache(data);
     return data;
@@ -238,27 +238,27 @@ const RESIK_PROFILE = (() => {
    *
    * @example
    *   const fileInput = document.querySelector('input[type="file"]');
-   *   const url = await RESIK_PROFILE.uploadAvatar(fileInput.files[0]);
+   *   const url = await SELARAS_PROFILE.uploadAvatar(fileInput.files[0]);
    */
   async function uploadAvatar(file) {
     if (!(file instanceof File)) {
-      throw new Error('[RESIK_PROFILE] uploadAvatar: argumen harus File.');
+      throw new Error('[SELARAS_PROFILE] uploadAvatar: argumen harus File.');
     }
 
     // Validasi tipe file
     const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
     if (!ALLOWED_TYPES.includes(file.type)) {
-      throw new Error('[RESIK_PROFILE] Format file tidak didukung. Gunakan JPG, PNG, WebP, atau GIF.');
+      throw new Error('[SELARAS_PROFILE] Format file tidak didukung. Gunakan JPG, PNG, WebP, atau GIF.');
     }
 
     // Validasi ukuran (max 2 MB)
     const MAX_SIZE_BYTES = 2 * 1024 * 1024;
     if (file.size > MAX_SIZE_BYTES) {
-      throw new Error('[RESIK_PROFILE] Ukuran file melebihi 2 MB.');
+      throw new Error('[SELARAS_PROFILE] Ukuran file melebihi 2 MB.');
     }
 
     const user = await _getCurrentUser();
-    if (!user) throw new Error('[RESIK_PROFILE] Tidak ada sesi aktif.');
+    if (!user) throw new Error('[SELARAS_PROFILE] Tidak ada sesi aktif.');
 
     const sb    = await _getClient();
     const ext   = file.name.split('.').pop();
@@ -271,7 +271,7 @@ const RESIK_PROFILE = (() => {
       .upload(path, file, { upsert: true, contentType: file.type });
 
     if (uploadError) {
-      throw new Error('[RESIK_PROFILE] Upload gagal: ' + uploadError.message);
+      throw new Error('[SELARAS_PROFILE] Upload gagal: ' + uploadError.message);
     }
 
     // Ambil URL publik
@@ -281,7 +281,7 @@ const RESIK_PROFILE = (() => {
       .getPublicUrl(path);
 
     const publicUrl = urlData?.publicUrl;
-    if (!publicUrl) throw new Error('[RESIK_PROFILE] Gagal mendapatkan URL publik avatar.');
+    if (!publicUrl) throw new Error('[SELARAS_PROFILE] Gagal mendapatkan URL publik avatar.');
 
     // Simpan URL ke profil
     await updateProfile({ avatar_url: publicUrl });
@@ -292,17 +292,17 @@ const RESIK_PROFILE = (() => {
   /**
    * getCurrent()
    * ────────────
-   * Ambil profil dari cache window.__RESIK_PROFILE__.
-   * Tersedia setelah RESIK_GUARD.protect() selesai dijalankan.
+   * Ambil profil dari cache window.__SELARAS_PROFILE__.
+   * Tersedia setelah SELARAS_GUARD.protect() selesai dijalankan.
    *
    * @returns {Object|null}
    *
    * @example
-   *   const profile = RESIK_PROFILE.getCurrent();
+   *   const profile = SELARAS_PROFILE.getCurrent();
    *   console.log(profile.full_name, profile.role);
    */
   function getCurrent() {
-    return window.__RESIK_PROFILE__ ?? null;
+    return window.__SELARAS_PROFILE__ ?? null;
   }
 
   /**
@@ -314,18 +314,18 @@ const RESIK_PROFILE = (() => {
    * @returns {Promise<Object|null>}
    *
    * @example
-   *   const fresh = await RESIK_PROFILE.refresh();
+   *   const fresh = await SELARAS_PROFILE.refresh();
    */
   async function refresh() {
     const user = await _getCurrentUser();
     if (!user) return null;
 
-    if (typeof RESIK_AUTH_CORE === 'undefined') {
-      console.warn('[RESIK_PROFILE] refresh: RESIK_AUTH_CORE belum dimuat.');
+    if (typeof SELARAS_AUTH_CORE === 'undefined') {
+      console.warn('[SELARAS_PROFILE] refresh: SELARAS_AUTH_CORE belum dimuat.');
       return null;
     }
 
-    const profile = await RESIK_AUTH_CORE.getProfile(user.id);
+    const profile = await SELARAS_AUTH_CORE.getProfile(user.id);
     if (profile) _syncCache(profile);
     return profile;
   }
@@ -344,4 +344,4 @@ const RESIK_PROFILE = (() => {
 
 })();
 
-window.RESIK_PROFILE = RESIK_PROFILE;
+window.SELARAS_PROFILE = SELARAS_PROFILE;

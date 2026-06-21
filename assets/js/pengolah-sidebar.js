@@ -25,11 +25,11 @@
     });
 
     // Populate session user info
-    if (window.RESIKSession) {
+    if (window.SELARASSession) {
       const nameEl  = document.querySelector('.sidebar-user .user-name');
       const emailEl = document.querySelector('.sidebar-user .user-email');
-      if (nameEl)  nameEl.textContent  = RESIKSession.getName();
-      if (emailEl) emailEl.textContent = RESIKSession.getEmail();
+      if (nameEl)  nameEl.textContent  = SELARASSession.getName();
+      if (emailEl) emailEl.textContent = SELARASSession.getEmail();
     }
   });
 })();

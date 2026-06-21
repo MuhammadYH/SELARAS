@@ -1,14 +1,14 @@
 /* =========================================
-   RESIK — auth.js
+   SELARAS — auth.js
    Handles authentication state management.
    Gabungan: modul lengkap + auto-guard halaman terproteksi.
    ========================================= */
 (function () {
   'use strict';
 
-  const TOKEN_KEY   = 'RESIK_token';
-  const USER_KEY    = 'RESIK_user';
-  const SESSION_KEY = 'RESIK_session';
+  const TOKEN_KEY   = 'SELARAS_token';
+  const USER_KEY    = 'SELARAS_user';
+  const SESSION_KEY = 'SELARAS_session';
 
   /* ---------- Internal helpers ---------- */
 
@@ -85,7 +85,7 @@
 
   /* ---------- Expose globally ---------- */
 
-  const RESIKAuth = {
+  const SELARASAuth = {
     getToken,
     getUser,
     isAuthenticated,
@@ -95,8 +95,8 @@
     requireAuth,
   };
 
-  // Dukung kedua nama: Auth (lama) dan RESIKAuth (baru)
-  window.Auth     = RESIKAuth;
-  window.RESIKAuth = RESIKAuth;
+  // Dukung kedua nama: Auth (lama) dan SELARASAuth (baru)
+  window.Auth     = SELARASAuth;
+  window.SELARASAuth = SELARASAuth;
 
 })();

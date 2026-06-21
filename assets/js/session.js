@@ -8,12 +8,12 @@
 
   function loadSession() {
     try {
-      const raw = sessionStorage.getItem('RESIK_session');
+      const raw = sessionStorage.getItem('SELARAS_session');
       if (raw) return JSON.parse(raw);
     } catch (_) {}
 
     // Fallback: decode JWT payload (no signature validation — server must validate)
-    const token = localStorage.getItem('RESIK_token') || sessionStorage.getItem('RESIK_token');
+    const token = localStorage.getItem('SELARAS_token') || sessionStorage.getItem('SELARAS_token');
     if (!token) return null;
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -27,7 +27,7 @@
   window.__session = session;
 
   // Expose helpers
-  window.RESIKSession = {
+  window.SELARASSession = {
     get:      function ()  { return window.__session; },
     getUser:  function ()  { return (window.__session || {}).user  || null; },
     getRole:  function ()  { return ((window.__session || {}).role || '').toLowerCase().trim(); },
@@ -37,13 +37,13 @@
 
   /* ── Supabase-aware role helper (async) ─────────────────────────
      role-guard.js dan redirect.js membaca role dari Supabase session.
-     Fungsi ini menjadi jembatan antara RESIKSession (sync/legacy)
+     Fungsi ini menjadi jembatan antara SELARASSession (sync/legacy)
      dan Supabase auth (async).
   ──────────────────────────────────────────────────────────────── */
   window.ResikSession = {
     /**
      * Get role dari Supabase session.
-     * Fallback ke RESIKSession jika Supabase tidak tersedia.
+     * Fallback ke SELARASSession jika Supabase tidak tersedia.
      * @returns {Promise<string|null>}
      */
     getRole: async function () {
@@ -63,8 +63,8 @@
           }
         } catch (_) {}
       }
-      // Fallback ke RESIK session
-      return window.RESIKSession.getRole() || null;
+      // Fallback ke SELARAS session
+      return window.SELARASSession.getRole() || null;
     },
 
     /**
@@ -82,7 +82,7 @@
         } catch (_) {}
       }
       // Fallback ke token lokal
-      return !!(localStorage.getItem('RESIK_token') || sessionStorage.getItem('RESIK_token'));
+      return !!(localStorage.getItem('SELARAS_token') || sessionStorage.getItem('SELARAS_token'));
     },
   };
 })();

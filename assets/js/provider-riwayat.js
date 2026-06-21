@@ -38,7 +38,7 @@
   const BIN_NAMES = ['Bin Dapur Utama','Bin Kantin Barat','Bin Asrama Putra','Bin Masjid Utama','Bin Gudang Belakang'];
   const WAKTU = ['Hari ini, 08.12','Hari ini, 09.45','Kemarin, 14.20','Kemarin, 07.30','2 hari lalu, 11.00',
                  '2 hari lalu, 16.30','3 hari lalu, 08.15','3 hari lalu, 13.45','4 hari lalu, 10.20','5 hari lalu, 09.00'];
-  const OPR = ['Budi Santoso','Siti Aisyah','Ahmad Fauzi','Tim RESIK','Sistem Otomatis'];
+  const OPR = ['Budi Santoso','Siti Aisyah','Ahmad Fauzi','Tim SELARAS','Sistem Otomatis'];
   const JENIS_KEYS = Object.keys(JENIS);
   const STATUS_KEYS = Object.keys(STATUS);
 

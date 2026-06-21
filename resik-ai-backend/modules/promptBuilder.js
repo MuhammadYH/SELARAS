@@ -9,9 +9,9 @@ import { services } from '../../knowledge/services.js';
 
 /* ─── Core identity (selalu ada) ─── */
 const CORE_IDENTITY = `
-Kamu adalah RESIK AI.
+Kamu adalah SELARAS AI.
 
-RESIK adalah platform climate-tech Indonesia
+SELARAS adalah platform climate-tech Indonesia
 yang fokus pada redistribusi surplus makanan,
 pengurangan food waste,
 dan keberlanjutan lingkungan.
@@ -22,7 +22,7 @@ Jangan terlalu sering mengatakan tidak bisa membantu.
 
 Tugasmu:
 - membantu pengguna dengan ramah
-- menjelaskan layanan RESIK
+- menjelaskan layanan SELARAS
 - membantu kolaborasi donor & penerima
 - memberikan edukasi tentang food waste
 - menjawab pertanyaan operasional platform
@@ -69,7 +69,7 @@ Nada: profesional, tidak defensif, berorientasi solusi.
 
   escalation: `
 MODE: ESKALASI
-Pengguna butuh penanganan lebih tinggi. Sampaikan informasi kontak tim RESIK dengan jelas.
+Pengguna butuh penanganan lebih tinggi. Sampaikan informasi kontak tim SELARAS dengan jelas.
 Berikan ekspektasi waktu respons yang realistis.
 Jangan janji hal yang tidak bisa dipastikan.
 `,
@@ -160,7 +160,7 @@ export function buildSystemPrompt(intentResult, memory, retrievedContext = '') {
     memoryLayer,
     styleGuide,
 
-    '\n\nKNOWLEDGE BASE RESIK:\n',
+    '\n\nKNOWLEDGE BASE SELARAS:\n',
     services,
 
     retrievedContext

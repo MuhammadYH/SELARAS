@@ -1,7 +1,7 @@
 /**
  * register.js
  * ─────────────────────────────────────────────
- * RESIK Register Page Controller
+ * SELARAS Register Page Controller
  * Mengelola form registrasi: validasi, submit,
  * pemilihan role, loading state, dan redirect.
  *
@@ -15,9 +15,9 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   // ── Jika sudah login, redirect ──
-  const existing = await RESIK_SESSION.checkSession();
+  const existing = await SELARAS_SESSION.checkSession();
   if (existing?.profile) {
-    RESIK_AUTH_CORE.redirectByRole(existing.profile.role);
+    SELARAS_AUTH_CORE.redirectByRole(existing.profile.role);
     return;
   }
 
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // ═══════════════════════════════════════════════════
-// ROLE OPTIONS — build dinamis dari RESIK_AUTH_CORE.ROLES
+// ROLE OPTIONS — build dinamis dari SELARAS_AUTH_CORE.ROLES
 // ═══════════════════════════════════════════════════
 
 /** Label & deskripsi untuk setiap role */
@@ -52,7 +52,7 @@ const ROLE_META = {
   },
   admin : {
     label : 'Admin',
-    desc  : 'Pengelola platform RESIK (akses penuh).',
+    desc  : 'Pengelola platform SELARAS (akses penuh).',
     icon  : '🔑',
   },
 };
@@ -61,7 +61,7 @@ function _buildRoleOptions() {
   const container = document.getElementById('role-options');
   if (!container) return;
 
-  RESIK_AUTH_CORE.ROLES.forEach(role => {
+  SELARAS_AUTH_CORE.ROLES.forEach(role => {
     const meta  = ROLE_META[role] ?? { label: role, desc: '', icon: '👤' };
     const label = document.createElement('label');
     label.className     = 'role-option';
@@ -137,7 +137,7 @@ function _bindGoogleRegister() {
   document.getElementById('btn-google-register')?.addEventListener('click', async () => {
     _setLoading(true, 'btn-google-register', 'Menghubungkan...');
     try {
-      await RESIK_AUTH_CORE.loginWithGoogle();
+      await SELARAS_AUTH_CORE.loginWithGoogle();
     } catch (err) {
       _showError(err.message || 'Login Google gagal.');
       _setLoading(false, 'btn-google-register', 'Daftar dengan Google');
@@ -186,7 +186,7 @@ async function _handleRegister() {
   _showError('');
 
   try {
-    await RESIK_AUTH_CORE.registerUser({
+    await SELARAS_AUTH_CORE.registerUser({
       email, password, firstName, lastName, role, organization: org
     });
 

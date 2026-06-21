@@ -3,7 +3,7 @@ Batch 4 transformer: /admin/*.html → /dashboard/admin/*.html
 - Fixes all CSS/JS/asset paths
 - Updates nav hrefs & data-page attributes
 - Injects shared JS stack (supabaseClient → roleGuard) before </body>
-- Adds RESIK_GUARD.protect(['admin']) DOMContentLoaded block
+- Adds SELARAS_GUARD.protect(['admin']) DOMContentLoaded block
 - Removes old admin-auth.js references
 """
 
@@ -45,7 +45,7 @@ SHARED_JS_STACK = """\
 GUARD_BLOCK = """\
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      const ctx = await RESIK_GUARD.protect(['admin']);
+      const ctx = await SELARAS_GUARD.protect(['admin']);
       if (!ctx) return;
       // Populate user info in sidebar
       const nameEl  = document.querySelector('.user-name');
@@ -63,7 +63,7 @@ def transform(html, old_filename):
         html = html.replace(f'href="{old}"', f'href="{new}"')
 
     # 2. Logo asset
-    html = html.replace('src="assets/LOGO_RESIK.png"', 'src="/assets/LOGO_RESIK.png"')
+    html = html.replace('src="assets/LOGO_SELARAS.png"', 'src="/assets/LOGO_SELARAS.png"')
 
     # 3. Nav hrefs & data-page
     for old_f, new_f in PAGE_MAP.items():

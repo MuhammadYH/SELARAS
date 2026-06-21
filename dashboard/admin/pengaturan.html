@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pengaturan — RESIK Admin</title>
+  <title>Pengaturan — SELARAS Admin</title>
 
   <link rel="stylesheet" href="/dashboard/shared/css/shared.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/layout.css"/>
@@ -665,7 +665,7 @@
               <div class="settings-section-header">
                 <div>
                   <div class="settings-section-title">Integrasi Layanan</div>
-                  <div class="settings-section-desc">Hubungkan sistem RESIK dengan layanan eksternal.</div>
+                  <div class="settings-section-desc">Hubungkan sistem SELARAS dengan layanan eksternal.</div>
                 </div>
               </div>
               <div class="settings-section-body">
@@ -737,13 +737,13 @@
               <div class="settings-section-header">
                 <div>
                   <div class="settings-section-title">API Key</div>
-                  <div class="settings-section-desc">Gunakan kunci ini untuk akses API sistem RESIK.</div>
+                  <div class="settings-section-desc">Gunakan kunci ini untuk akses API sistem SELARAS.</div>
                 </div>
                 <button class="btn btn-outline btn-sm">Buat Baru</button>
               </div>
               <div class="settings-section-body">
                 <div class="api-key-box">
-                  <div class="api-key-value" id="apiKeyValue">RESIK_live_sk_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0</div>
+                  <div class="api-key-value" id="apiKeyValue">SELARAS_live_sk_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0</div>
                   <button class="btn btn-ghost btn-sm" onclick="toggleApiKey()">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   </button>
@@ -761,7 +761,7 @@
             <div class="settings-section">
               <div class="about-app-hero">
                 <div class="app-logo-circle">🌿</div>
-                <div style="font-size:var(--font-size-xl); font-weight:800; color:var(--text-primary);">RESIK</div>
+                <div style="font-size:var(--font-size-xl); font-weight:800; color:var(--text-primary);">SELARAS</div>
                 <div style="font-size:var(--font-size-sm); color:var(--text-muted); margin-top:4px;">Foodwaste Solution</div>
                 <div class="app-version-badge">v2.4.1 — Stabil</div>
               </div>
@@ -769,7 +769,7 @@
                 <div class="info-row">
                   <div class="info-row-content">
                     <div class="info-row-label">Nama Aplikasi</div>
-                    <div class="info-row-value">RESIK — Smart Waste Management</div>
+                    <div class="info-row-value">SELARAS — Smart Waste Management</div>
                   </div>
                 </div>
                 <div class="info-row">
@@ -788,13 +788,13 @@
                 <div class="info-row">
                   <div class="info-row-content">
                     <div class="info-row-label">Developer / Tim</div>
-                    <div class="info-row-value">Tim RESIK — Jombang, Jawa Timur</div>
+                    <div class="info-row-value">Tim SELARAS — Jombang, Jawa Timur</div>
                   </div>
                 </div>
                 <div class="info-row">
                   <div class="info-row-content">
                     <div class="info-row-label">Kontak Bantuan</div>
-                    <div class="info-row-value">support@RESIK.id · (0321) 999888</div>
+                    <div class="info-row-value">support@SELARAS.id · (0321) 999888</div>
                   </div>
                 </div>
                 <div class="info-row">
@@ -825,7 +825,7 @@
                   <div class="help-channel-card">
                     <div class="help-channel-icon">📖</div>
                     <div class="help-channel-name">Panduan Penggunaan</div>
-                    <div class="help-channel-desc">Dokumentasi lengkap fitur RESIK</div>
+                    <div class="help-channel-desc">Dokumentasi lengkap fitur SELARAS</div>
                   </div>
                   <div class="help-channel-card">
                     <div class="help-channel-icon">🎬</div>
@@ -850,7 +850,7 @@
                   <div class="help-channel-card">
                     <div class="help-channel-icon">💡</div>
                     <div class="help-channel-name">Saran & Masukan</div>
-                    <div class="help-channel-desc">Bagikan ide untuk pengembangan RESIK</div>
+                    <div class="help-channel-desc">Bagikan ide untuk pengembangan SELARAS</div>
                   </div>
                 </div>
               </div>
@@ -900,7 +900,7 @@
               <div class="settings-section-header">
                 <div>
                   <div class="settings-section-title">Kirim Laporan</div>
-                  <div class="settings-section-desc">Laporkan bug atau kirim masukan kepada tim RESIK.</div>
+                  <div class="settings-section-desc">Laporkan bug atau kirim masukan kepada tim SELARAS.</div>
                 </div>
               </div>
               <div class="settings-section-body">
@@ -988,7 +988,7 @@ document.querySelectorAll('.channel-chip').forEach(chip => {
 // ── API Key helpers ──
 let apiVisible = false;
 const apiMasked = '•'.repeat(40);
-const apiReal   = 'RESIK_live_sk_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0';
+const apiReal   = 'SELARAS_live_sk_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0';
 
 function toggleApiKey() {
   apiVisible = !apiVisible;
@@ -1051,10 +1051,10 @@ document.getElementById('sidebarOverlay')?.addEventListener('click', () => {
   <script src="/dashboard/shared/js/roleGuard.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      const ctx = await RESIK_GUARD.protect(['admin']);
+      const ctx = await SELARAS_GUARD.protect(['admin']);
       if (!ctx) return;
       // Render sidebar with user context
-      RESIK_SIDEBAR.render({
+      SELARAS_SIDEBAR.render({
         role       : 'admin',
         currentPage: 'pengaturan.html',
         user       : { ...(ctx.profile || {}), email: ctx.user?.email },

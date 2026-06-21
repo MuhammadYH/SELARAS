@@ -1,6 +1,6 @@
 /**
  * modules/ragRetriever.js
- * Retrieval-Augmented Generation (RAG) untuk RESIK AI.
+ * Retrieval-Augmented Generation (RAG) untuk SELARAS AI.
  *
  * Implementasi: keyword-weighted retrieval (production-ready tanpa vector DB).
  * Catatan: untuk scale besar, ganti dengan embedding + Pinecone/Weaviate.
@@ -17,7 +17,7 @@ const KNOWLEDGE_BASE = [
     tags: ['daftar', 'registrasi', 'provider', 'mulai', 'bergabung'],
     content: `
 CARA MENDAFTAR SEBAGAI FOOD PROVIDER:
-1. Klik "Daftar Gratis" di halaman utama RESIK
+1. Klik "Daftar Gratis" di halaman utama SELARAS
 2. Pilih role: Food Provider
 3. Isi data: nama bisnis, alamat, kategori (restoran/kantin/hotel/dll)
 4. Verifikasi email (cek inbox / spam)
@@ -37,7 +37,7 @@ CARA MENDAFTAR SEBAGAI PENGELOLA:
 3. Upload dokumen verifikasi:
    - Akta pendirian / surat izin operasional
    - KTP penanggung jawab
-4. Proses verifikasi: 1–2 hari kerja oleh tim RESIK
+4. Proses verifikasi: 1–2 hari kerja oleh tim SELARAS
 5. Setelah disetujui → bisa mulai klaim listing
 
 PENTING: Akun Pengelola memerlukan verifikasi manual. Tidak langsung aktif.
@@ -50,7 +50,7 @@ PENTING: Akun Pengelola memerlukan verifikasi manual. Tidak langsung aktif.
     topic: 'pickup',
     tags: ['pickup', 'klaim', 'alur', 'sistem', 'ambil'],
     content: `
-ALUR PICKUP DI RESIK:
+ALUR PICKUP DI SELARAS:
 1. Pengelola buka dashboard → lihat listing tersedia di peta
 2. Klik listing → pilih "Klaim"
 3. Pilih jadwal pickup yang tersedia
@@ -91,7 +91,7 @@ Jika status stuck di "Accepted" / "On the Way":
 3. Hubungi pihak lain via fitur chat di dalam platform
 4. Jika tetap tidak ada respons → laporkan via Dashboard > Laporkan Masalah
 
-Tim RESIK akan menindaklanjuti dalam 2 jam kerja.
+Tim SELARAS akan menindaklanjuti dalam 2 jam kerja.
 Pickup yang tidak selesai tidak mempengaruhi rating akun Anda.
 `
   },
@@ -102,7 +102,7 @@ Pickup yang tidak selesai tidak mempengaruhi rating akun Anda.
     topic: 'pricing',
     tags: ['gratis', 'biaya', 'harga', 'free', 'bayar'],
     content: `
-HARGA & PAKET RESIK:
+HARGA & PAKET SELARAS:
 
 ✅ GRATIS untuk:
 - Perorangan (semua fitur dasar)
@@ -124,7 +124,7 @@ Tidak ada biaya tersembunyi untuk akun Gratis.
     topic: 'verification',
     tags: ['keamanan pangan', 'food safety', 'verifikasi makanan', 'layak konsumsi'],
     content: `
-SISTEM KEAMANAN PANGAN RESIK:
+SISTEM KEAMANAN PANGAN SELARAS:
 
 Berlapis:
 1. Verifikasi foto AI — setiap listing dianalisis otomatis saat upload
@@ -133,7 +133,7 @@ Berlapis:
 4. Fitur Laporan — siapapun bisa laporkan listing mencurigakan
 5. Listing dilaporkan ditangani < 2 jam
 
-RESIK hanya menerima:
+SELARAS hanya menerima:
 ✅ Makanan masih layak konsumsi
 ✅ Makanan mendekati expired tapi aman
 ✅ Bahan mentah berlebih
@@ -148,7 +148,7 @@ RESIK hanya menerima:
     topic: 'faq',
     tags: ['badge', 'reward', 'eco', 'warrior', 'poin', 'kontributor'],
     content: `
-SISTEM BADGE RESIK:
+SISTEM BADGE SELARAS:
 
 🌱 Green Beginner — donasi/pickup pertama berhasil
 🤝 Eco Helper — 10+ pickup/donasi sukses
@@ -156,7 +156,7 @@ SISTEM BADGE RESIK:
 
 Badge tampil di profil publik.
 Bisa dibagikan ke Instagram, LinkedIn, dll.
-Badge baru sedang dikembangkan — update via newsletter RESIK.
+Badge baru sedang dikembangkan — update via newsletter SELARAS.
 `
   },
 
@@ -190,7 +190,7 @@ Masih bermasalah: kirim email ke admin@resik.id dengan subject "Login Issue"
     topic: 'escalation',
     tags: ['kontak', 'hubungi', 'email', 'whatsapp', 'admin', 'tim resik'],
     content: `
-KONTAK TIM RESIK:
+KONTAK TIM SELARAS:
 📧 Email: admin@resik.id (respons < 24 jam)
 💬 WhatsApp: +6281234567890 (respons < 2 jam, jam kerja)
 📋 Form kontak: resik.id/kontak
@@ -242,5 +242,5 @@ export function retrieveContext(message, intentResult) {
 
   if (topChunks.length === 0) return '';
 
-  return `\n\n[KONTEKS RELEVAN DARI KNOWLEDGE BASE RESIK]\n${topChunks.join('\n\n---\n\n')}\n[/KONTEKS]`;
+  return `\n\n[KONTEKS RELEVAN DARI KNOWLEDGE BASE SELARAS]\n${topChunks.join('\n\n---\n\n')}\n[/KONTEKS]`;
 }

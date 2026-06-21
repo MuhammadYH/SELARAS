@@ -1,13 +1,13 @@
 /**
  * api.js
  * ─────────────────────────────────────────────
- * RESIK Generic API Helper
+ * SELARAS Generic API Helper
  *
  * Wrapper tipis di atas Supabase client untuk
  * query yang sering dipakai di semua role.
  *
  * Depends on: supabaseClient.js
- * Expose: window.RESIK_API
+ * Expose: window.SELARAS_API
  *
  * Prinsip:
  *   - Setiap fungsi return { data, error }
@@ -16,7 +16,7 @@
  * ─────────────────────────────────────────────
  */
 
-const RESIK_API = (() => {
+const SELARAS_API = (() => {
 
   // ─── Internal helper ──────────────────────────────────────────────────────
 
@@ -25,7 +25,7 @@ const RESIK_API = (() => {
   }
 
   function _handleError(context, error) {
-    if (error) console.warn(`RESIK API [${context}]:`, error.message);
+    if (error) console.warn(`SELARAS API [${context}]:`, error.message);
     return error ? null : undefined;
   }
 
@@ -189,4 +189,4 @@ const RESIK_API = (() => {
 
 })();
 
-window.RESIK_API = RESIK_API;
+window.SELARAS_API = SELARAS_API;

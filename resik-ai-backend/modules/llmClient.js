@@ -10,7 +10,7 @@ const GEMINI_MODEL = 'gemini-2.0-flash';
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY; // dari environment variable, BUKAN hardcode
 
 if (!GEMINI_API_KEY) {
-  console.error('[RESIK AI] ⚠️  GEMINI_API_KEY tidak ditemukan di environment variables!');
+  console.error('[SELARAS AI] ⚠️  GEMINI_API_KEY tidak ditemukan di environment variables!');
 }
 
 /**

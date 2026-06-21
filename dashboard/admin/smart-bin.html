@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart Bin — RESIK Admin</title>
+  <title>Smart Bin — SELARAS Admin</title>
   <link rel="stylesheet" href="/dashboard/shared/css/shared.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/layout.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/components.css"/>
@@ -979,10 +979,10 @@ overlay?.addEventListener('click', () => { sidebar.classList.remove('open'); ove
   <script src="/dashboard/shared/js/roleGuard.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      const ctx = await RESIK_GUARD.protect(['admin']);
+      const ctx = await SELARAS_GUARD.protect(['admin']);
       if (!ctx) return;
       // Render sidebar with user context
-      RESIK_SIDEBAR.render({
+      SELARAS_SIDEBAR.render({
         role       : 'admin',
         currentPage: 'smart-bin.html',
         user       : { ...(ctx.profile || {}), email: ctx.user?.email },

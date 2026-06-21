@@ -1,15 +1,15 @@
 /**
  * sidebar.js — Shared Sidebar Component
- * Global: RESIK_SIDEBAR
+ * Global: SELARAS_SIDEBAR
  *
  * Usage: mount ke elemen #sidebar-mount
  * Config tiap halaman via <body data-sidebar-role="admin" data-sidebar-page="index.html">
  *
  * Render otomatis saat DOMContentLoaded.
- * Expose: RESIK_SIDEBAR.render(config) untuk render manual.
+ * Expose: SELARAS_SIDEBAR.render(config) untuk render manual.
  */
 
-const RESIK_SIDEBAR = (() => {
+const SELARAS_SIDEBAR = (() => {
   'use strict';
 
   // ── Nav menu per role ────────────────────────────────────────────────────
@@ -102,7 +102,7 @@ const RESIK_SIDEBAR = (() => {
           </svg>
         </div>
         <h4>Kelola Sampah Organik Lebih Cerdas dan Berdampak</h4>
-        <p>Bersama RESIK, kelola sampah organik secara efisien, transparan, dan memberikan manfaat nyata bagi masyarakat.</p>
+        <p>Bersama SELARAS, kelola sampah organik secara efisien, transparan, dan memberikan manfaat nyata bagi masyarakat.</p>
       </div>`,
     provider: '',
     pengolah: '',
@@ -138,7 +138,7 @@ const RESIK_SIDEBAR = (() => {
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <aside class="admin-sidebar" id="adminSidebar">
   <div class="sidebar-logo">
-    <img src="/assets/LOGO_RESIK.png" alt="RESIK" class="sidebar-logo-img"/>
+    <img src="/assets/LOGO_SELARAS.png" alt="SELARAS" class="sidebar-logo-img"/>
   </div>
   <nav class="sidebar-nav">
     ${navHTML}
@@ -200,7 +200,7 @@ const RESIK_SIDEBAR = (() => {
   function render({ role, currentPage, user = {} }) {
     const mount = document.getElementById('sidebar-mount');
     if (!mount) {
-      console.warn('[RESIK_SIDEBAR] #sidebar-mount tidak ditemukan.');
+      console.warn('[SELARAS_SIDEBAR] #sidebar-mount tidak ditemukan.');
       return;
     }
     mount.innerHTML = buildSidebar(role, currentPage, user);

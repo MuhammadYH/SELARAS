@@ -1,6 +1,6 @@
 /**
- * RESIK AI Backend — server.js
- * Secure, modular API server untuk RESIK AI Assistant
+ * SELARAS AI Backend — server.js
+ * Secure, modular API server untuk SELARAS AI Assistant
  * Stack: Node.js + Express
  *
  * ⚠️  API key TIDAK pernah keluar ke frontend.
@@ -96,7 +96,7 @@ app.post('/api/chat', async (req, res) => {
     });
 
   } catch (err) {
-    console.error('[RESIK AI] Error:', err.message);
+    console.error('[SELARAS AI] Error:', err.message);
     return res.status(500).json({
       error: 'Maaf, terjadi kesalahan sistem. Tim kami sudah diberitahu.',
       reply: getFallbackReply()
@@ -105,7 +105,7 @@ app.post('/api/chat', async (req, res) => {
 });
 
 /* Health check */
-app.get('/api/health', (_, res) => res.json({ status: 'ok', service: 'RESIK AI v3' }));
+app.get('/api/health', (_, res) => res.json({ status: 'ok', service: 'SELARAS AI v3' }));
 
 /* ─── Helper: susun messages array ─── */
 function buildMessages(history, userMessage) {
@@ -119,5 +119,5 @@ function getFallbackReply() {
 }
 
 app.listen(PORT, () => {
-  console.log(`[RESIK AI] Server berjalan di port ${PORT} ✅`);
+  console.log(`[SELARAS AI] Server berjalan di port ${PORT} ✅`);
 });

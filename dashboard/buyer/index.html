@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard — RESIK Buyer</title>
+  <title>Dashboard — SELARAS Buyer</title>
   <link rel="stylesheet" href="/dashboard/shared/css/shared.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/layout.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/components.css"/>
@@ -53,9 +53,9 @@
   <script src="/dashboard/shared/components/navbar.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', async () => {
-    const ctx = await RESIK_GUARD.protect(['buyer']);
+    const ctx = await SELARAS_GUARD.protect(['buyer']);
     if (!ctx) return;
-    RESIK_SIDEBAR.render({
+    SELARAS_SIDEBAR.render({
       role       : 'buyer',
       currentPage: 'index.html',
       user       : { ...(ctx.profile || {}), email: ctx.user?.email },

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard — RESIK</title>
+  <title>Dashboard — SELARAS</title>
   <link rel="stylesheet" href="assets/css/main.css" />
 
   <style>
@@ -35,7 +35,7 @@
 
     <!-- Nav: gunakan data-resik-* untuk auto-fill -->
     <nav class="topnav">
-      <span>RESIK</span>
+      <span>SELARAS</span>
       <div class="user-info">
         <img data-resik-avatar alt="Avatar" width="32" height="32" style="border-radius:50%" />
         <strong data-resik-name></strong>
@@ -74,7 +74,7 @@
     document.addEventListener('DOMContentLoaded', async () => {
 
       // ── 1. Guard: cek sesi & role ──
-      const result = await RESIK_SESSION.requireAuth({
+      const result = await SELARAS_SESSION.requireAuth({
         allowedRoles  : [],          // kosong = semua role boleh
         redirectTo    : '/login.html',
         forbiddenPage : '/403.html',
@@ -88,12 +88,12 @@
       // ── 3. Tombol Logout ──
       document.getElementById('btn-logout')?.addEventListener('click', async () => {
         if (confirm('Yakin ingin keluar?')) {
-          await RESIK_AUTH_CORE.logoutUser();
+          await SELARAS_AUTH_CORE.logoutUser();
         }
       });
 
       // ── 4. Dengarkan perubahan auth (token expired, dll.) ──
-      await RESIK_SESSION.listenAuthChanges((event) => {
+      await SELARAS_SESSION.listenAuthChanges((event) => {
         if (event === 'SIGNED_OUT') {
           window.location.href = '/login.html';
         }

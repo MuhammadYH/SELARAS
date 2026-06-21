@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard — RESIK Provider</title>
+  <title>Dashboard — SELARAS Provider</title>
   <link rel="stylesheet" href="/dashboard/shared/css/shared.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/layout.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/components.css"/>
@@ -28,7 +28,7 @@
 <div class="admin-shell">
   <aside class="admin-sidebar" id="adminSidebar">
     <div class="sidebar-logo">
-      <img src="/assets/LOGO_RESIK.png" alt="RESIK" class="sidebar-logo-img"/>
+      <img src="/assets/LOGO_SELARAS.png" alt="SELARAS" class="sidebar-logo-img"/>
     </div>
     <nav class="sidebar-nav">
       <a class="sidebar-nav-item active" data-page="index.html" href="/dashboard/provider/index.html">
@@ -83,7 +83,7 @@
 <script src="/dashboard/shared/js/roleGuard.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', async () => {
-    const ctx = await RESIK_GUARD.protect(['provider']);
+    const ctx = await SELARAS_GUARD.protect(['provider']);
     if (!ctx) return;
     const nameEl  = document.querySelector('.user-name');
     const emailEl = document.querySelector('.user-email');

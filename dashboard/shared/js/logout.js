@@ -1,10 +1,10 @@
 /**
  * logout.js
  * ─────────────────────────────────────────────
- * RESIK Logout Helper
+ * SELARAS Logout Helper
  *
  * Menangani logout dari semua halaman dashboard.
- * Cukup load file ini dan panggil RESIK_LOGOUT.init()
+ * Cukup load file ini dan panggil SELARAS_LOGOUT.init()
  * atau attach ke tombol logout secara manual.
  *
  * Depends on: supabaseClient.js, auth.js
@@ -22,11 +22,11 @@
  * ─────────────────────────────────────────────
  */
 
-const RESIK_LOGOUT = (() => {
+const SELARAS_LOGOUT = (() => {
 
   /**
    * Jalankan proses logout.
-   * Memanggil RESIK_AUTH_CORE.logoutUser() lalu redirect ke login.
+   * Memanggil SELARAS_AUTH_CORE.logoutUser() lalu redirect ke login.
    *
    * @param {boolean} [withConfirm=false]
    * @param {string}  [confirmMsg]
@@ -42,9 +42,9 @@ const RESIK_LOGOUT = (() => {
         activeBtn.textContent = 'Keluar…';
       }
 
-      await RESIK_AUTH_CORE.logoutUser(true); // true = redirect ke login
+      await SELARAS_AUTH_CORE.logoutUser(true); // true = redirect ke login
     } catch (err) {
-      console.error('RESIK logout error:', err.message);
+      console.error('SELARAS logout error:', err.message);
       // Paksa redirect meskipun logout API error
       window.location.href = '/login.html';
     }
@@ -75,4 +75,4 @@ const RESIK_LOGOUT = (() => {
   return { run, init };
 })();
 
-window.RESIK_LOGOUT = RESIK_LOGOUT;
+window.SELARAS_LOGOUT = SELARAS_LOGOUT;

@@ -64,7 +64,7 @@
   /* ── FAQ data ── */
   const FAQS = [
     {
-      q: 'Bagaimana cara mendaftarkan smart bin baru ke sistem RESIK?',
+      q: 'Bagaimana cara mendaftarkan smart bin baru ke sistem SELARAS?',
       a: 'Masuk ke halaman Smart Bin, lalu klik tombol "Tambah Bin". Masukkan kode perangkat yang tertera di label bin, nama lokasi, dan titik koordinat. Tim admin akan memverifikasi dalam 1×24 jam kerja.',
     },
     {
@@ -85,7 +85,7 @@
     },
     {
       q: 'Bagaimana cara mengubah jadwal pengangkutan?',
-      a: 'Jadwal pengangkutan diatur oleh tim RESIK berdasarkan kapasitas bin. Untuk permintaan perubahan jadwal khusus, hubungi support kami minimal 1 hari sebelumnya melalui WhatsApp atau email.',
+      a: 'Jadwal pengangkutan diatur oleh tim SELARAS berdasarkan kapasitas bin. Untuk permintaan perubahan jadwal khusus, hubungi support kami minimal 1 hari sebelumnya melalui WhatsApp atau email.',
     },
   ];
 

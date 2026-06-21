@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notifikasi — RESIK Admin</title>
+  <title>Notifikasi — SELARAS Admin</title>
 
   <link rel="stylesheet" href="/dashboard/shared/css/shared.css"/>
   <link rel="stylesheet" href="/dashboard/shared/css/layout.css"/>
@@ -72,10 +72,10 @@
   <script src="js/admin-notifikasi.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      const ctx = await RESIK_GUARD.protect(['admin']);
+      const ctx = await SELARAS_GUARD.protect(['admin']);
       if (!ctx) return;
       // Render sidebar with user context
-      RESIK_SIDEBAR.render({
+      SELARAS_SIDEBAR.render({
         role       : 'admin',
         currentPage: 'notifikasi.html',
         user       : { ...(ctx.profile || {}), email: ctx.user?.email },

@@ -1,4 +1,4 @@
-# RESIK AI v3 — Arsitektur & Panduan Deployment
+# SELARAS AI v3 — Arsitektur & Panduan Deployment
 
 ## Ringkasan Perubahan dari v2 → v3
 
@@ -116,7 +116,7 @@ Server berjalan di `http://localhost:3001`
 
 ### 4. Ganti frontend
 
-Di HTML website RESIK, ganti:
+Di HTML website SELARAS, ganti:
 ```html
 <!-- HAPUS ini: -->
 <script src="resik-ai.js"></script>

@@ -1,11 +1,11 @@
 export const services = `
-TENTANG RESIK:
+TENTANG SELARAS:
 
-RESIK adalah platform climate-tech Indonesia
+SELARAS adalah platform climate-tech Indonesia
 yang berfokus pada redistribusi surplus makanan
 untuk mengurangi food waste dan membantu masyarakat.
 
-LAYANAN RESIK:
+LAYANAN SELARAS:
 
 1. Redistribusi Makanan
 - Menyalurkan surplus makanan layak konsumsi
@@ -27,7 +27,7 @@ LAYANAN RESIK:
 - Dampak sosial & lingkungan
 - ESG support
 
-TUJUAN RESIK:
+TUJUAN SELARAS:
 - Mengurangi food waste
 - Membantu masyarakat membutuhkan
 - Mendorong keberlanjutan lingkungan

@@ -1,7 +1,7 @@
 /**
  * login.js
  * ─────────────────────────────────────────────
- * RESIK Login Page Controller
+ * SELARAS Login Page Controller
  * Mengelola form login: validasi, submit, error handling,
  * loading state, dan redirect ke dashboard.
  *
@@ -15,9 +15,9 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   // ── Jika sudah login, redirect langsung ──
-  const existing = await RESIK_SESSION.checkSession();
+  const existing = await SELARAS_SESSION.checkSession();
   if (existing?.profile) {
-    RESIK_REDIRECT.afterLogin(existing.profile.role);
+    SELARAS_REDIRECT.afterLogin(existing.profile.role);
     return;
   }
 
@@ -53,7 +53,7 @@ function _bindGoogleLogin() {
   document.getElementById('btn-google-login')?.addEventListener('click', async () => {
     _setLoading(true, 'btn-google-login', 'Menghubungkan...');
     try {
-      await RESIK_AUTH_CORE.loginWithGoogle();
+      await SELARAS_AUTH_CORE.loginWithGoogle();
       // Browser akan redirect ke Google, tidak perlu lanjut
     } catch (err) {
       _showError(err.message || 'Login Google gagal.');
@@ -89,7 +89,7 @@ function _bindForgotPassword() {
     btn.style.pointerEvents = 'none';
 
     try {
-      await RESIK_AUTH_CORE.resetPassword(email);
+      await SELARAS_AUTH_CORE.resetPassword(email);
       _showSuccess('Link reset password sudah dikirim ke email kamu. Cek inbox (atau folder spam).');
     } catch (err) {
       _showError(err.message || 'Gagal mengirim email reset.');
@@ -120,19 +120,19 @@ async function _handleLogin() {
   _showError('');
 
   try {
-    const { profile } = await RESIK_AUTH_CORE.loginUser(email, password, false);
+    const { profile } = await SELARAS_AUTH_CORE.loginUser(email, password, false);
 
     // ── Cek apakah akun aktif ──
     if (profile?.is_active === false) {
-      throw new Error('Akun kamu tidak aktif. Hubungi admin RESIK.');
+      throw new Error('Akun kamu tidak aktif. Hubungi admin SELARAS.');
     }
 
     // ── Redirect ke return URL atau dashboard sesuai role ──
-    const returnUrl = RESIK_SESSION.getReturnUrl();
+    const returnUrl = SELARAS_SESSION.getReturnUrl();
     if (returnUrl) {
       window.location.href = returnUrl;
     } else {
-      RESIK_REDIRECT.afterLogin(profile?.role ?? '');
+      SELARAS_REDIRECT.afterLogin(profile?.role ?? '');
     }
 
   } catch (err) {

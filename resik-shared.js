@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════
-   resik-shared.js — Animasi & Hamburger Menu Global RESIK
+   resik-shared.js — Animasi & Hamburger Menu Global SELARAS
    v2.0 — Cinematic Scroll Animations
    Sisipkan sebelum </body> di semua halaman
    ════════════════════════════════════════════════════════ */
@@ -60,7 +60,7 @@
 
     const currentHref = window.location.pathname.split('/').pop() || 'index';
     const navItems = [
-      { href: '01RESIK.html',       label: 'Beranda',      icon: '🏠' },
+      { href: '01SELARAS.html',       label: 'Beranda',      icon: '🏠' },
       { href: '01TENTANGKAMI.html', label: 'Tentang Kami', icon: 'ℹ️' },
       { href: '01SOLUSI.html',      label: 'Solusi',       icon: '💡' },
       { href: '01CONTACT.html',     label: 'Kontak Kami',  icon: '📬' },
@@ -84,8 +84,8 @@
 
     drawer.innerHTML = `
       <div class="drawer-header">
-        <a href="01RESIK.html" class="drawer-logo">
-          <img src="${logoSrc}" alt="RESIK Logo" style="height:32px;width:auto;object-fit:contain;">
+        <a href="01SELARAS.html" class="drawer-logo">
+          <img src="${logoSrc}" alt="SELARAS Logo" style="height:32px;width:auto;object-fit:contain;">
         </a>
         <button class="drawer-close" aria-label="Tutup menu">✕</button>
       </div>
@@ -93,7 +93,7 @@
         ${linksHTML}
       </nav>
       <div class="drawer-cta">
-        <a href="01login_register.html">Masuk ke RESIK →</a>
+        <a href="01login_register.html">Masuk ke SELARAS →</a>
       </div>
     `;
     document.body.appendChild(drawer);
@@ -496,7 +496,7 @@
       if (!el.style.transitionDelay) el.style.transitionDelay = (0.05 * i) + 's';
     });
 
-    // ── Bridge: class dari 01RESIK (.anim, .d1~d4 — hero elements, skip hero)
+    // ── Bridge: class dari 01SELARAS (.anim, .d1~d4 — hero elements, skip hero)
     // Hero anim classes are CSS-driven, but non-hero .anim elements need observer
     document.querySelectorAll('.anim:not(.rsik-anim)').forEach(el => {
       // Skip elements inside .hero section (CSS animasi sendiri)

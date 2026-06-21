@@ -1,7 +1,7 @@
 /**
  * session.js
  * ─────────────────────────────────────────────
- * RESIK Session Guard
+ * SELARAS Session Guard
  * Gunakan script ini di setiap halaman yang perlu dilindungi.
  *
  * Cara pakai — taruh di <head> sebelum konten lain:
@@ -14,7 +14,7 @@
  *   • Redirect ke login jika belum login
  *   • Isi elemen UI dengan data user (nama, role, avatar)
  *   • Dengarkan perubahan auth state secara real-time
- *   • Expose RESIK_SESSION untuk dipakai halaman lain
+ *   • Expose SELARAS_SESSION untuk dipakai halaman lain
  * ─────────────────────────────────────────────
  */
 
@@ -52,7 +52,7 @@ async function requireAuth({
   _showLoadingOverlay(true);
 
   try {
-    const session = await RESIK_AUTH_CORE.getSession();
+    const session = await SELARAS_AUTH_CORE.getSession();
 
     // ── Tidak ada sesi → ke login ──
     if (!session) {
@@ -64,7 +64,7 @@ async function requireAuth({
     const user = session.user;
 
     // ── Ambil profil ──
-    const profile = await RESIK_AUTH_CORE.getProfile(user.id);
+    const profile = await SELARAS_AUTH_CORE.getProfile(user.id);
 
     // ── Cek role jika ada pembatasan ──
     if (allowedRoles.length > 0 && !allowedRoles.includes(profile?.role)) {
@@ -81,7 +81,7 @@ async function requireAuth({
 
     return { user, profile };
   } catch (err) {
-    console.error('RESIK requireAuth error:', err.message);
+    console.error('SELARAS requireAuth error:', err.message);
     window.location.href = redirectTo;
   } finally {
     _sessionCache.loading = false;
@@ -96,10 +96,10 @@ async function requireAuth({
  */
 async function checkSession() {
   try {
-    const session = await RESIK_AUTH_CORE.getSession();
+    const session = await SELARAS_AUTH_CORE.getSession();
     if (!session) return null;
 
-    const profile = await RESIK_AUTH_CORE.getProfile(session.user.id);
+    const profile = await SELARAS_AUTH_CORE.getProfile(session.user.id);
     _sessionCache.user    = session.user;
     _sessionCache.profile = profile;
     _populateUserUI(profile ?? {});
@@ -128,7 +128,7 @@ async function listenAuthChanges(callback = null) {
     }
 
     if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-      const profile = await RESIK_AUTH_CORE.getProfile(session.user.id);
+      const profile = await SELARAS_AUTH_CORE.getProfile(session.user.id);
       _sessionCache.user    = session.user;
       _sessionCache.profile = profile;
       _populateUserUI(profile ?? {});
@@ -218,7 +218,7 @@ function getReturnUrl() {
 // EXPORT
 // ═══════════════════════════════════════════════════
 
-window.RESIK_SESSION = {
+window.SELARAS_SESSION = {
   requireAuth,
   checkSession,
   listenAuthChanges,

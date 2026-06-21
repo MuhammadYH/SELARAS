@@ -1,6 +1,6 @@
 -- ============================================================
 -- 02_profiles_rls.sql
--- RESIK — Row Level Security untuk tabel profiles
+-- SELARAS — Row Level Security untuk tabel profiles
 -- Jalankan SETELAH 01_profiles_table.sql.
 -- ============================================================
 

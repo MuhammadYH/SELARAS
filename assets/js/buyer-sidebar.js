@@ -1,5 +1,5 @@
 /* =========================================
-   RESIK Buyer — buyer-sidebar.js
+   SELARAS Buyer — buyer-sidebar.js
    Handles sidebar toggle, active state, overlay.
    ========================================= */
 (function () {

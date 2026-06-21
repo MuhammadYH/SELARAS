@@ -1,12 +1,12 @@
 /**
  * roleGuard.js
  * ─────────────────────────────────────────────
- * RESIK Role Guard
+ * SELARAS Role Guard
  *
  * Middleware proteksi halaman berbasis role.
  * Jalankan satu baris ini di setiap halaman dashboard:
  *
- *   RESIK_GUARD.protect(['admin']);
+ *   SELARAS_GUARD.protect(['admin']);
  *
  * Flow:
  *   1. Cek sesi aktif → jika tidak ada → redirect ke login
@@ -16,11 +16,11 @@
  *   5. Jika cocok → isi UI dengan data user, lanjut render halaman
  *
  * Depends on: supabaseClient.js, auth.js, session.js, redirect.js
- * Expose: window.RESIK_GUARD
+ * Expose: window.SELARAS_GUARD
  * ─────────────────────────────────────────────
  */
 
-const RESIK_GUARD = (() => {
+const SELARAS_GUARD = (() => {
 
   /**
    * Proteksi halaman berdasarkan role.
@@ -41,20 +41,20 @@ const RESIK_GUARD = (() => {
 
     try {
       // ── 1. Cek sesi ──────────────────────────────────────────────────────
-      const session = await RESIK_AUTH_CORE.getSession();
+      const session = await SELARAS_AUTH_CORE.getSession();
 
       if (!session) {
-        RESIK_REDIRECT.saveReturnUrl();
+        SELARAS_REDIRECT.saveReturnUrl();
         window.location.href = loginPage;
         return;
       }
 
       // ── 2. Ambil profil ───────────────────────────────────────────────────
-      const profile = await RESIK_AUTH_CORE.getProfile(session.user.id);
+      const profile = await SELARAS_AUTH_CORE.getProfile(session.user.id);
 
       if (!profile) {
         // Profil tidak ditemukan — paksa logout
-        await RESIK_AUTH_CORE.logoutUser(false);
+        await SELARAS_AUTH_CORE.logoutUser(false);
         window.location.href = loginPage;
         return;
       }
@@ -69,8 +69,8 @@ const RESIK_GUARD = (() => {
       _populateUI(profile);
 
       // ── 5. Simpan ke cache global ─────────────────────────────────────────
-      window.__RESIK_USER__    = session.user;
-      window.__RESIK_PROFILE__ = profile;
+      window.__SELARAS_USER__    = session.user;
+      window.__SELARAS_PROFILE__ = profile;
 
       // ── 6. Dispatch event — halaman bisa listen ini ───────────────────────
       document.dispatchEvent(new CustomEvent('resik:ready', {
@@ -80,7 +80,7 @@ const RESIK_GUARD = (() => {
       return { user: session.user, profile };
 
     } catch (err) {
-      console.error('RESIK roleGuard error:', err.message);
+      console.error('SELARAS roleGuard error:', err.message);
       window.location.href = loginPage;
     } finally {
       _showOverlay(false);
@@ -93,8 +93,8 @@ const RESIK_GUARD = (() => {
    * @returns {{ user, profile } | null}
    */
   function getCurrentContext() {
-    const user    = window.__RESIK_USER__;
-    const profile = window.__RESIK_PROFILE__;
+    const user    = window.__SELARAS_USER__;
+    const profile = window.__SELARAS_PROFILE__;
     if (!user || !profile) return null;
     return { user, profile };
   }
@@ -151,4 +151,4 @@ const RESIK_GUARD = (() => {
 
 })();
 
-window.RESIK_GUARD = RESIK_GUARD;
+window.SELARAS_GUARD = SELARAS_GUARD;
