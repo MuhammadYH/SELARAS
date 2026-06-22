@@ -7,7 +7,7 @@
  *
  * Dependencies:
  *   - /assets/js/resik-supabase.js  (exposes `supabase` client)
- *   - /assets/js/session.js         (exposes ResikSession or similar helper)
+ *   - /assets/js/session.js         (exposes SelarasSession or similar helper)
  */
 
 (function () {

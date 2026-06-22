@@ -40,7 +40,7 @@
      Fungsi ini menjadi jembatan antara SELARASSession (sync/legacy)
      dan Supabase auth (async).
   ──────────────────────────────────────────────────────────────── */
-  window.ResikSession = {
+  window.SelarasSession = {
     /**
      * Get role dari Supabase session.
      * Fallback ke SELARASSession jika Supabase tidak tersedia.

@@ -202,7 +202,7 @@ window.SELARAS_DATA = {
 };
 
 // ═══════════════════════════════════════════════════
-// WEEKLY CHART — Data volume mingguan untuk ResikApp
+// WEEKLY CHART — Data volume mingguan untuk SelarasApp
 // ═══════════════════════════════════════════════════
 
 const DUMMY_WEEKLY = [
