@@ -8,38 +8,47 @@
  * - profile
  *
  * Compatible dengan:
- * - window.supabase
+ * - getSupabase()       ← prioritas utama
  * - window.supabaseClient
- * - getSupabase()
+ * - window.supabase
+ *
+ * Fix: gunakan window.currentUser (diset pengolah-auth.js)
+ * untuk menghindari race condition getSession().
  * --------------------------------------------------
  */
 
 window.getUserContext = async function () {
   try {
+    // ── 1. Resolve Supabase client ───────────────────────────────
     let sb = null;
-
-    if (window.supabaseClient) {
+    if (typeof getSupabase === 'function') {
+      sb = await getSupabase();
+    } else if (window.supabaseClient) {
       sb = window.supabaseClient;
     } else if (window.supabase) {
       sb = window.supabase;
-    } else if (typeof getSupabase === 'function') {
-      sb = await getSupabase();
     }
 
     if (!sb) {
       throw new Error('Supabase client tidak ditemukan');
     }
 
-    const {
-      data: { session },
-      error: sessionError
-    } = await sb.auth.getSession();
+    // ── 2. Ambil userId ──────────────────────────────────────────
+    // Jika pengolah-auth.js sudah set window.currentUser, pakai langsung
+    // untuk menghindari getSession() race condition.
+    let userId = null;
 
-    if (sessionError) throw sessionError;
-    if (!session?.user) return null;
+    if (window.currentUser && window.currentUser.id) {
+      userId = window.currentUser.id;
+    } else {
+      // Fallback: getSession() — hanya jika currentUser belum ada
+      const { data: { session }, error: sessionError } = await sb.auth.getSession();
+      if (sessionError) throw sessionError;
+      if (!session?.user) return null;
+      userId = session.user.id;
+    }
 
-    const userId = session.user.id;
-
+    // ── 3. Query profil dari database ───────────────────────────
     const { data: profile, error: profileError } = await sb
       .from('profiles')
       .select('*')
@@ -50,7 +59,7 @@ window.getUserContext = async function () {
 
     return {
       userId,
-      role: profile?.role || null,
+      role:   profile?.role    || window.currentUser?.role || null,
       roleId: profile?.role_id || null,
       profile
     };
@@ -98,26 +107,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       profile.email ||
       '';
 
-    const sidebarName =
-      document.getElementById('sidebarUserName');
+    const sidebarName  = document.getElementById('sidebarUserName');
+    const sidebarEmail = document.getElementById('sidebarUserEmail');
 
-    const sidebarEmail =
-      document.getElementById('sidebarUserEmail');
-
-    if (sidebarName) {
-      sidebarName.textContent = displayName;
-    }
-
-    if (sidebarEmail) {
-      sidebarEmail.textContent = displayEmail;
-    }
+    if (sidebarName)  sidebarName.textContent  = displayName;
+    if (sidebarEmail) sidebarEmail.textContent = displayEmail;
 
     console.log('[ROLE CHECK] Loaded:', {
       userId: context.userId,
-      role: context.role,
+      role:   context.role,
       roleId: context.roleId,
-      name: displayName,
-      email: displayEmail
+      name:   displayName,
+      email:  displayEmail
     });
 
   } catch (err) {

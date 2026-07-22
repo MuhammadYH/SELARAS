@@ -569,11 +569,8 @@
         return;
       }
 
-      // Trim untuk jaga-jaga jika roleId membawa whitespace/CRLF tersembunyi
-      // (mis. data lama yang belum dibersihkan) — tanpa ini .eq('provider_id', ...)
-      // bisa gagal match walau nilainya terlihat sama di UI.
-      _providerId = typeof context.roleId === 'string' ? context.roleId.trim() : context.roleId;
-      console.log('[SMART BIN] Provider ID:', JSON.stringify(_providerId));
+      _providerId = context.roleId;
+      console.log('[SMART BIN] Provider ID:', _providerId);
 
       if (!_providerId) {
         console.error('[SMART BIN] role_id tidak ditemukan di profil');

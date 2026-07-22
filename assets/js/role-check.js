@@ -57,10 +57,17 @@ window.getUserContext = async function () {
 
     if (profileError) throw profileError;
 
+    // Trim role & role_id untuk menghindari mismatch akibat whitespace/CRLF
+    // tak terlihat yang kadang ikut tersimpan saat input data (copy-paste dari
+    // Word/Excel/CSV). Tanpa ini, query .eq('provider_id', roleId) di halaman
+    // Smart Bin/Dashboard bisa gagal match walau datanya sama secara visual.
+    const rawRole   = profile?.role    || window.currentUser?.role || null;
+    const rawRoleId = profile?.role_id || null;
+
     return {
       userId,
-      role:   profile?.role    || window.currentUser?.role || null,
-      roleId: profile?.role_id || null,
+      role:   typeof rawRole   === 'string' ? rawRole.trim()   : rawRole,
+      roleId: typeof rawRoleId === 'string' ? rawRoleId.trim() : rawRoleId,
       profile
     };
 
